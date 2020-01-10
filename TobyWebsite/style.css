@@ -1,0 +1,37 @@
+/* Base Styles -------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    border-radius: 20px;
+}
+
+/* Main Styles --------------------- */
+
+/* Layout Styles ------------------ */
+
+/* Floated Columns ------------------ */
+
+.reasons,
+.strategies {
+    width: 46.5%;
+}
+
+.reasons {
+    float: left;
+}
+
+.strategies {
+    float: right;
+}
+
+/* Float Clearfix ------------------ */
+
+.group:after {
+    content: "";
+    display: table;
+    clear: both;
+}
