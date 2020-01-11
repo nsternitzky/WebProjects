@@ -121,6 +121,7 @@ a:hover {
 .group {
     width: 80%;
     margin: auto;
+    max-width: 960px;
 }
 
 .arrow {
@@ -131,7 +132,7 @@ a:hover {
 .why-box {
     background: #230902 url('toby-existential-crisis.jpg') center;
     background-size: cover;
-    padding: 15% 18%;
+    padding: 10% 12%;
     margin: 100px 0 60px;
     border-top: 10px solid #0f819a;
     color: #e0e7f1;
@@ -160,4 +161,27 @@ a:hover {
     content: "";
     display: table;
     clear: both;
+}
+
+/* Media Queries -------------------- */
+
+@media (max-width: 620px) {
+    h1 {
+        font-size: 3.8rem;
+        letter-spacing: 0.1em;
+    }
+    .title {
+        font-size: 1rem;
+    }
+    .reasons,
+    .strategies {
+        float: none;
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .title {
+        border-bottom: none;
+    }
 }
