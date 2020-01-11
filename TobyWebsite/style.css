@@ -4,14 +4,120 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #e0e7f1;
+    color: #350e03;
+    margin: 0;
+    font-family: Verdana, Geneva, sans-serif;
+    line-height: 1.5;
+}
+
+h1,
+h2,
+.title {
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+h1 {
+    font-size: 6rem;
+    text-shadow: 2px 2px 5px #230902;
+    margin: 30px 0 0;
+    font-weight: 100;
+}
+
+h2 {
+    line-height: 1.4;
+    font-weight: 700;
+}
+
 img {
     max-width: 100%;
     border-radius: 20px;
 }
 
+ul,
+ol {
+    margin: 30px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Pseudo-classes ------------------ */
+
+a:link {
+    color: #cf7e47;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #b06a44;
+}
+
+a:hover {
+    color: #0f819a;
+}
+
 /* Main Styles --------------------- */
 
+.main-header,
+.intro,
+.main-footer,
+.list-heading {
+    text-align: center;
+}
+
+.main-header {
+    background: linear-gradient(#cf7e47, transparent),
+                linear-gradient(transparent, #e0e7f1),
+              #cf7e47 url(toby-asleep.jpg) center;
+    background-size: cover;
+    height: 850px;
+    color: #e0e7f1;
+    padding-top: 180px;
+}
+
+.title {
+    font-size: 1.25rem;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #0f819a;
+}
+
+.intro {
+    font-size: 1.25rem;
+    line-height: 1.6;
+}
+
+.intro,
+.group,
+.main-footer {
+    padding: 25px 0 50px;
+}
+
+.t-border {
+    border-top: 2px solid #b06a44;
+}
+
+.group {
+    border-bottom: 2px solid #b06a44;
+}
+
+.main-footer {
+    border-bottom: 10px solid #cf7e47;
+}
+
 /* Layout Styles ------------------ */
+
+main {
+    width: 80%;
+    margin: auto;
+}
+
+.arrow {
+    width: 50px;
+    margin-top: 100px;
+}
 
 /* Floated Columns ------------------ */
 

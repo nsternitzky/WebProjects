@@ -8,20 +8,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header id="top">
-        <span>You fool! Now you can never escape from</span>
+    <header id="top" class="main-header">
+        <span class="title">You fool! Now you can never escape from</span>
         <h1>TorboNet</h1>
+        <a href="#intro"><img class="arrow" src="arrow.svg" alt="Down arrow"></a>
     </header>
     <main>
-        <div>
-            <p class="intro">
+        <div id="intro" class="intro t-border">
+            <p>
                 TorboNet is your source for everything Toby. It's too late to run now. I'm sorry, but you did this to yourself.
             </p>
         </div>
-        <div class="group">
+        <div class="group t-border">
             <div class="reasons">
                 <img src="toby-in-jail.jpg" alt="Toby in jail">
-                <h2>What makes Toby the worst?</h2>
+                <h2 class="list-heading">What makes Toby the worst?</h2>
                 <p>    
                     Toby has plenty of bad qualities, but why is he the worst? Let's scrape the very bottom of the barrel to find out.
                 </p>
@@ -33,7 +34,7 @@
             </div>
             <div class="strategies">
                 <img src="toby-and-papa.jpg" alt="Toby (left) and his papa (right, done with Toby's shit)">
-                <h2>How to deal with Toby's shit</h2>
+                <h2 class="list-heading">How to deal with Toby's shit</h2>
                 <p>    
                     Here are some recommended methods for putting up with Toby's assorted bullshit.
                 </p>
@@ -45,8 +46,8 @@
             </div>
         </div>
     </main>
-    <footer>
-        <p>&copy; Toby Enterprises Inc.</p>
+    <footer class="main-footer">
+        <p>&copy; 2020 Toby Enterprises Inc.</p>
         <a href="#top">Relive the nightmare</a>
     </footer>
 </body>
