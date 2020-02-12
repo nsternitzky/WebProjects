@@ -40,7 +40,8 @@ img {
 }
 
 form {
-	width: 80%;
+	width: 90%;
+	max-width: 750px;
 	margin: 10px auto 30px;
 	padding: 10px 20px;
 	background: #f4f7f8;
@@ -228,6 +229,9 @@ label.light {
     }
 	.tagline {
 		font-size: 1.4em;
+	}
+	form {
+		width: 80%;
 	}
 }
 @media (min-width: 1150px) {
