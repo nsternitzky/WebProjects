@@ -142,7 +142,7 @@ label.light {
 
 .name {
 	font-size: 1.35em;
-	margin: 0;
+	margin: 0 auto;
 }
 .main-nav {
 	margin-top: 5px;
@@ -208,8 +208,12 @@ label.light {
 }
 .fa-bars {
 	color: #3acec2;
+	font-size: 1.8em;
 }
 .toggle-menu {
+	position: absolute;
+	margin-left: 10px;
+	top: 22px;
 	border: none;
 	background: #fff;
 }
