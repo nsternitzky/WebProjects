@@ -7,4 +7,6 @@
 .jumbotron {
   background-image: url('../img/nook-bg.jpg');
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center bottom;
 }
