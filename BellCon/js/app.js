@@ -1,7 +1,6 @@
-const navbarItems = document.querySelector('.navbar-nav');
+const navbarList = document.querySelector('.navbar-nav');
 const navbarMenu = document.querySelector('#navbarNavAltMarkup');
 
-navbarItems.addEventListener('click', () => {
-    console.log('hi');
+navbarList.addEventListener('click', () => {
     navbarMenu.classList.toggle('show');
 });
