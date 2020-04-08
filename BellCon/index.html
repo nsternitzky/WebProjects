@@ -30,7 +30,8 @@
     </nav><!-- /navbar -->
 
     <!-- jumbotron -->
-    <div class="jumbotron jumbotron-fluid bg-info text-white mb-0">
+    <div class='jumbotron-bg'></div>
+    <div class="jumbotron text-white mb-0">
       <div class="container text-center pt-5">
         <h1 class="display-2 font-weight-bold text-shadow">BellCon</h1>
         <p class="lead font-weight-bold text-shadow">The Premier Online Animal Crossing Event</p>
@@ -41,284 +42,286 @@
       </div>
     </div><!-- /jumbotron -->
 
-    <div class="container">
-      <!-- about -->
-      <div id="about" class="row pt-4">
-        <div class="col-lg col-xl-6 order-lg-2">
-          <h3 class="mb-4">About BellCon</h3>
-          <img class="mb-4 img-fluid rounded d-none d-sm-block" src="img/about-img.jpg" alt="Portland">
-		      <p>No need to leave your couch - this year's BellCon can be experienced from the comfort of your own home!</p>
-		      <p>That's right! BellCon has gone totally digital this year to meet the needs of a rapidly changing world. You'll be able to see all your favorite speakers without having to change out of your pajamas!</p>
+    <div class='container-fluid bg-light'>
+      <div class="container">
+        <!-- about -->
+        <div id="about" class="row pt-4">
+          <div class="col-lg col-xl-6 order-lg-2">
+            <h3 class="mb-4">About BellCon</h3>
+            <img class="mb-4 img-fluid rounded d-none d-sm-block" src="img/about-img.jpg" alt="Portland">
+            <p>No need to leave your couch - this year's BellCon can be experienced from the comfort of your own home!</p>
+            <p>That's right! BellCon has gone totally digital this year to meet the needs of a rapidly changing world. You'll be able to see all your favorite speakers without having to change out of your pajamas!</p>
+          </div>
+          <div class="col-lg order-lg-1 pt-4 pt-lg-0">
+            <h3 class="mb-4">Familiar Faces and New Friends</h3>
+            <p>This year's speaker lineup includes an eclectic mix of noteworthy townspeople, fan favorites, and some new faces!</p>
+            <p>From new fashion trends to fishing tips and tricks, our speakers have something to offer for everyone!</p>
+            <p>Check out a sampling of this year's speakers below!</p>
+          </div>
+          <div class="col-lg order-3 pt-4 pt-lg-0">
+            <h3 class="mb-4">Highlights</h3>
+            <div class="list-group" id='highlights-list'>
+              <a href="#cj-talk" class="list-group-item list-group-item-action"><strong>Fishing</strong>: Find out how to land the rare ones!</a>
+              <a href="#nook-talk" class="list-group-item list-group-item-action"><strong>Housing</strong>: Learn how you can have the coolest home in town!</a>
+              <a href="#isabelle-talk" class="list-group-item list-group-item-action"><strong>Town planning</strong>: Get some tips on making your town beautiful!</a>
+              <a href="#blathers-talk" class="list-group-item list-group-item-action"><strong>Museum</strong>: See what the latest exhibits have to offer!</a>
+              <a href="#" class="list-group-item list-group-item-action"><strong>Turnips</strong>: Learn how to play the stalk market - and win!</a>
+              <a href="#mabel-talk" class="list-group-item list-group-item-action"><strong>Fashion</strong>: Hear about the latest trends!</a>
+            </div>
+          </div>
+        </div><!-- /about -->
+
+        <!-- speakers -->
+        <h1 id="speakers" class="display-4 text-center text-muted mt-3 py-4">Speakers</h1>
+        <div class="row">
+          <div class="col-md-6 col-lg-4">
+            <div class="card mb-3">
+              <img class="card-img-top" src="img/tom-nook.png" alt="Tom Nook">
+              <div class="card-body">
+                <h4 class="card-title">Tom Nook</h4>
+                <p class="card-text">Come on, you know who this guy is! Everyone's favorite and most "generous" landlord, Tom is always willing to expand your home - for the right price!</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card mb-3">
+              <img class="card-img-top" src="img/isabelle.png" alt="Isabelle">
+              <div class="card-body">
+                <h4 class="card-title">Isabelle</h4>
+                <p class="card-text">Voted most valuable team player this year, Isabelle works tirelessly in her position as town administrator to make sure your town is the best it can be. </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card mb-3">
+              <img class="card-img-top" src="img/mabel.png" alt="Mabel Able">
+              <div class="card-body">
+                <h4 class="card-title">Mabel Able</h4>
+                <p class="card-text">As the bubbly face of the Able Sisters clothing store, fashion guru Mabel will leave no fabulous stone unturned until she helps you find the perfect look.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card mb-3">
+              <img class="card-img-top" src="img/blathers.png" alt="Blathers">
+              <div class="card-body">
+                <h4 class="card-title">Blathers</h4>
+                <p class="card-text">Museum curator extraordinaire, Blathers is an enthusiast of everything that nature has to offer. Well - except for those disgusting <em>bugs</em>...</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card mb-3">
+              <img class="card-img-top" src="img/kk.png" alt="K.K. Slider">
+              <div class="card-body">
+                <h4 class="card-title">K.K. Slider</h4>
+                <p class="card-text">The coolest cat - err, <em>dog</em> - around, K.K. is known far and wide for his dulcet tones, masterful guitar skills, and eclectic blend of various musical styles.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card">
+              <img class="card-img-top" src="img/cj.png" alt="C.J.">
+              <div class="card-body">
+                <h4 class="card-title">C.J.</h4>
+                <p class="card-text">One of the newer faces in this year's lineup, C.J. is more than happy to share the hints and tricks he's picked up while becoming a fishing expert.</p>
+              </div>
+            </div>
+          </div>
+        </div><!-- /speakers -->
+
+        <!-- schedule -->
+        <h1 id="schedule" class="display-4 text-center text-muted mt-3 py-4">Schedule</h1>
+
+        <ul class="list-group">
+          <a data-toggle="collapse" data-target="#nook-desc" class="list-group-item list-group-item-action" id='nook-talk'>
+            <div class='media'>
+              <img class='mr-3 schedule-thumbnail rounded-circle' src='img/tom-nook-thumb.png' alt='Tom Nook'>
+              <div class='media-body'>
+                <div class="d-flex justify-content-between">
+                  <h5 class="mb-1">Expand Your Home Today!</h5>
+                  <div>
+                    <span class="badge badge-pill badge-info p-2">9:00am</span>
+                  </div>
+                </div>
+                <p class="mb-1">Tom Nook</p>
+              </div>
+            </div>
+            <div class='collapse' id='nook-desc'>
+              <hr>
+              <p>Admit it, your home could really use another room. Or a basement. Or another floor. Tom Nook is more than happy to tell you why you need to expand your living space - <em>right now</em>.</p>
+            </div>
+          </a>
+          <a data-toggle="collapse" data-target="#isabelle-desc" class="list-group-item list-group-item-action" id='isabelle-talk'>
+            <div class='media'>
+              <img class='mr-3 schedule-thumbnail rounded-circle' src='img/isabelle-thumb.png' alt='Isabelle'>
+              <div class='media-body'>
+                <div class="d-flex justify-content-between">
+                  <h5 class="mb-1">Let's Make It Beautiful</h5>
+                  <div>
+                    <span class="badge badge-pill badge-info p-2">10:00am</span>
+                  </div>
+                </div>
+                <p class="mb-1">Isabelle</p>
+              </div>
+            </div>
+            <div class='collapse' id='isabelle-desc'>
+              <hr>
+              <p>Do you want your town to be the best of the best? Isabelle is here to give you the tips you'll need to bolster that rating!</p>
+            </div>
+          </a>
+          <a data-toggle="collapse" data-target="#mabel-desc" class="list-group-item list-group-item-action" id='mabel-talk'>
+            <div class='media'>
+              <img class='mr-3 schedule-thumbnail rounded-circle' src='img/mabel-thumb.png' alt='Mabel Able'>
+              <div class='media-body'>
+                <div class="d-flex justify-content-between">
+                  <h5 class="mb-1">Let's Make <em>You</em> Beautiful</h5>
+                  <div>
+                    <span class="badge badge-pill badge-info p-2">11:00am</span>
+                  </div>
+                </div>
+                <p class="mb-1">Mabel Able</p>
+              </div>
+            </div>
+            <div class='collapse' id='mabel-desc'>
+              <hr>
+              <p>Learn how to dress to impress with the bubbly face of the Able Sisters clothing store, Mabel! She'll fill you in on the latest trends so you can be ahead of the curve.</p>
+            </div>
+          </a>
+          <li class="list-group-item list-group-item-success">
+            <div class="d-flex justify-content-between">
+              <h5 class="mb-1">Lunch</h5>
+              <div>
+                <span class="badge badge-pill badge-info p-2">12:00pm</span>
+              </div>
+            </div>
+            <p class="mb-1">Free sea bass and eggs for everyone!</p>
+          </li>
+          <a data-toggle="collapse" data-target="#cj-desc" class="list-group-item list-group-item-action" id='cj-talk'>
+            <div class='media'>
+              <img class='mr-3 schedule-thumbnail rounded-circle' src='img/cj-thumb.png' alt='C.J.'>
+              <div class='media-body'>
+                <div class="d-flex justify-content-between">
+                  <h5 class="mb-1">How to Catch Fish (Other Than Sea Bass)</h5>
+                  <div>
+                    <span class="badge badge-pill badge-info p-2">1:00pm</span>
+                  </div>
+                </div>
+                <p class="mb-1">C.J.</p>
+              </div>
+            </div>
+            <div class='collapse' id='cj-desc'>
+              <hr>
+              <p>Tired of catching sea bass? Or even worse, water eggs? C.J. shares his expertise to help you catch sea specimens that most people can hardly dream of encountering.</p>
+            </div>
+          </a>
+          <a data-toggle="collapse" data-target="#blathers-desc" class="list-group-item list-group-item-action" id='blathers-talk'>
+            <div class='media'>
+              <img class='mr-3 schedule-thumbnail rounded-circle' src='img/blathers-thumb.png' alt='Blathers'>
+              <div class='media-body'>
+                <div class="d-flex justify-content-between">
+                  <h5 class="mb-1">Amazing Art, Fascinating Fish, and Fantastic Fossils (...and Beastly Bugs)</h5>
+                  <div>
+                    <span class="badge badge-pill badge-info p-2">2:00pm</span>
+                  </div>
+                </div>
+                <p class="mb-1">Blathers</p>
+              </div>
+            </div>
+            <div class='collapse' id='blathers-desc'>
+              <hr>
+              <p>What's new at the museum? Blathers checks in to give you the latest information on the ever-expanding collections.</p>
+              <small><em>Flick, if you're reading this - no funny business! Keep your tarantulas away from this talk!</em></small>
+            </div>
+          </a>
+          <a data-toggle="collapse" data-target="#kk-desc" class="list-group-item list-group-item-action" id='kk-concert'>
+            <div class='media'>
+              <img class='mr-3 schedule-thumbnail rounded-circle' src='img/kk-thumb.png' alt='K.K. Slider'>
+              <div class='media-body'>
+                <div class="d-flex justify-content-between">
+                  <h5 class="mb-1">K.K. Slider Live in Concert</h5>
+                  <div>
+                    <span class="badge badge-pill badge-info p-2">7:00pm</span>
+                  </div>
+                </div>
+                <p class="mb-1">K.K. Slider</p>
+              </div>
+            </div>
+            <div class='collapse' id='kk-desc'>
+              <hr>
+              <p class='mb-2'>K.K. plays a live selection of his greatest hits. Expect to hear tunes like:</p>
+              <ul class='mb-2'>
+                <li>K.K. Disco</li>
+                <li>K.K. Metal</li>
+                <li>DJ K.K.</li>
+              </ul>
+              <p>...and many more!</p>
+            </div>
+          </a>
+        </ul><!-- /schedule -->
+
+        <!-- callout button -->
+        <button type="button" class="btn btn-outline-info btn-lg d-block mx-auto my-5" data-toggle="modal" data-target="#register">Don't Miss Out, Register Now</button>
+
+        <!-- signup form -->
+        <hr>
+        <div class="row py-4 text-muted">
+          <div class="col-md col-xl-5">
+            <p><strong>About Nook Inc.</strong></p>
+            <p>Nook Inc. provides travel and development opportunities, specializing in transforming deserted islands into thriving towns.</p>
+          </div>
+          <div class="col-md col-xl-5 ml-auto">
+            <p><strong>Stay up-to-date on BellCon</strong></p>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Email">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">Sign up</button>
+              </span>
+            </div>
+          </div>
         </div>
-        <div class="col-lg order-lg-1 pt-4 pt-lg-0">
-		      <h3 class="mb-4">Familiar Faces and New Friends</h3>
-  	      <p>This year's speaker lineup includes an eclectic mix of noteworthy townspeople, fan favorites, and some new faces!</p>
-		      <p>From new fashion trends to fishing tips and tricks, our speakers have something to offer for everyone!</p>
-		      <p>Check out a sampling of this year's speakers below!</p>
-        </div>
-        <div class="col-lg order-3 pt-4 pt-lg-0">
-          <h3 class="mb-4">Highlights</h3>
-					<div class="list-group" id='highlights-list'>
-					  <a href="#cj-talk" class="list-group-item list-group-item-action"><strong>Fishing</strong>: Find out how to land the rare ones!</a>
-					  <a href="#nook-talk" class="list-group-item list-group-item-action"><strong>Housing</strong>: Learn how you can have the coolest home in town!</a>
-            <a href="#isabelle-talk" class="list-group-item list-group-item-action"><strong>Town planning</strong>: Get some tips on making your town beautiful!</a>
-					  <a href="#blathers-talk" class="list-group-item list-group-item-action"><strong>Museum</strong>: See what the latest exhibits have to offer!</a>
-					  <a href="#" class="list-group-item list-group-item-action"><strong>Turnips</strong>: Learn how to play the stalk market - and win!</a>
-					  <a href="#mabel-talk" class="list-group-item list-group-item-action"><strong>Fashion</strong>: Hear about the latest trends!</a>
-					</div>
-        </div>
-      </div><!-- /about -->
+        <hr><!-- /signup form -->
 
-      <!-- speakers -->
-      <h1 id="speakers" class="display-4 text-center text-muted mt-3 py-4">Speakers</h1>
-			<div class="row">
-				<div class="col-md-6 col-lg-4">
-          <div class="card mb-3">
-            <img class="card-img-top" src="img/tom-nook.png" alt="Tom Nook">
-            <div class="card-body">
-              <h4 class="card-title">Tom Nook</h4>
-              <p class="card-text">Come on, you know who this guy is! Everyone's favorite and most "generous" landlord, Tom is always willing to expand your home - for the right price!</p>
-            </div>
-          </div>
-				</div>
-
-				<div class="col-md-6 col-lg-4">
-          <div class="card mb-3">
-            <img class="card-img-top" src="img/isabelle.png" alt="Isabelle">
-            <div class="card-body">
-              <h4 class="card-title">Isabelle</h4>
-              <p class="card-text">Voted most valuable team player this year, Isabelle works tirelessly in her position as town administrator to make sure your town is the best it can be. </p>
-            </div>
-          </div>
-				</div>
-
-				<div class="col-md-6 col-lg-4">
-			    <div class="card mb-3">
-			      <img class="card-img-top" src="img/mabel.png" alt="Mabel Able">
-			      <div class="card-body">
-			        <h4 class="card-title">Mabel Able</h4>
-			        <p class="card-text">As the bubbly face of the Able Sisters clothing store, fashion guru Mabel will leave no fabulous stone unturned until she helps you find the perfect look.</p>
-			      </div>
-			    </div>
-				</div>
-
-				<div class="col-md-6 col-lg-4">
-				  <div class="card mb-3">
-			      <img class="card-img-top" src="img/blathers.png" alt="Blathers">
-			      <div class="card-body">
-			        <h4 class="card-title">Blathers</h4>
-			        <p class="card-text">Museum curator extraordinaire, Blathers is an enthusiast of everything that nature has to offer. Well - except for those disgusting <em>bugs</em>...</p>
-			      </div>
-			    </div>
-				</div>
-
-				<div class="col-md-6 col-lg-4">
-			    <div class="card mb-3">
-			      <img class="card-img-top" src="img/kk.png" alt="K.K. Slider">
-			      <div class="card-body">
-			        <h4 class="card-title">K.K. Slider</h4>
-			        <p class="card-text">The coolest cat - err, <em>dog</em> - around, K.K. is known far and wide for his dulcet tones, masterful guitar skills, and eclectic blend of various musical styles.</p>
-			      </div>
-			    </div>
-				</div>
-
-				<div class="col-md-6 col-lg-4">
-			    <div class="card">
-			      <img class="card-img-top" src="img/cj.png" alt="C.J.">
-			      <div class="card-body">
-			        <h4 class="card-title">C.J.</h4>
-			        <p class="card-text">One of the newer faces in this year's lineup, C.J. is more than happy to share the hints and tricks he's picked up while becoming a fishing expert.</p>
-			      </div>
-			    </div>
-				</div>
-			</div><!-- /speakers -->
-
-      <!-- schedule -->
-      <h1 id="schedule" class="display-4 text-center text-muted mt-3 py-4">Schedule</h1>
-
-      <ul class="list-group">
-        <a data-toggle="collapse" data-target="#nook-desc" class="list-group-item list-group-item-action" id='nook-talk'>
-          <div class='media'>
-            <img class='mr-3 schedule-thumbnail rounded-circle' src='img/tom-nook-thumb.png' alt='Tom Nook'>
-            <div class='media-body'>
-              <div class="d-flex justify-content-between">
-                <h5 class="mb-1">Expand Your Home Today!</h5>
-                <div>
-                  <span class="badge badge-pill badge-info p-2">9:00am</span>
+        <!-- footer -->
+        <div class="row py-3">
+          <div class="col-md-7 col-lg-5  mb-3 mb-md-0">
+            <ul class="nav justify-content-center justify-content-md-start">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Travel</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Development</a>
+              </li>
+              <li class="nav-item">
+                <div class="btn-group dropup">
+                  <button type="button" class="btn btn-outline-secondary">Other Cons</button>
+                  <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">HyruleCon</a>
+                    <a class="dropdown-item" href="#">KoopaCon</a>
+                    <a class="dropdown-item" href="#">Pok&#233;Con</a>
+                    <a class="dropdown-item" href="#">SquidCon</a>
+                  </div>
                 </div>
-              </div>
-              <p class="mb-1">Tom Nook</p>
-            </div>
-          </div>
-          <div class='collapse' id='nook-desc'>
-            <hr>
-            <p>Admit it, your home could really use another room. Or a basement. Or another floor. Tom Nook is more than happy to tell you why you need to expand your living space - <em>right now</em>.</p>
-          </div>
-        </a>
-        <a data-toggle="collapse" data-target="#isabelle-desc" class="list-group-item list-group-item-action" id='isabelle-talk'>
-          <div class='media'>
-            <img class='mr-3 schedule-thumbnail rounded-circle' src='img/isabelle-thumb.png' alt='Isabelle'>
-            <div class='media-body'>
-              <div class="d-flex justify-content-between">
-                <h5 class="mb-1">Let's Make It Beautiful</h5>
-                <div>
-                  <span class="badge badge-pill badge-info p-2">10:00am</span>
-                </div>
-              </div>
-              <p class="mb-1">Isabelle</p>
-            </div>
-          </div>
-          <div class='collapse' id='isabelle-desc'>
-            <hr>
-            <p>Do you want your town to be the best of the best? Isabelle is here to give you the tips you'll need to bolster that rating!</p>
-          </div>
-        </a>
-        <a data-toggle="collapse" data-target="#mabel-desc" class="list-group-item list-group-item-action" id='mabel-talk'>
-          <div class='media'>
-            <img class='mr-3 schedule-thumbnail rounded-circle' src='img/mabel-thumb.png' alt='Mabel Able'>
-            <div class='media-body'>
-              <div class="d-flex justify-content-between">
-                <h5 class="mb-1">Let's Make <em>You</em> Beautiful</h5>
-                <div>
-                  <span class="badge badge-pill badge-info p-2">11:00am</span>
-                </div>
-              </div>
-              <p class="mb-1">Mabel Able</p>
-            </div>
-          </div>
-          <div class='collapse' id='mabel-desc'>
-            <hr>
-            <p>Learn how to dress to impress with the bubbly face of the Able Sisters clothing store, Mabel! She'll fill you in on the latest trends so you can be ahead of the curve.</p>
-          </div>
-        </a>
-        <li class="list-group-item list-group-item-success">
-          <div class="d-flex justify-content-between">
-            <h5 class="mb-1">Lunch</h5>
-            <div>
-              <span class="badge badge-pill badge-info p-2">12:00pm</span>
-            </div>
-          </div>
-          <p class="mb-1">Free sea bass and eggs for everyone!</p>
-        </li>
-        <a data-toggle="collapse" data-target="#cj-desc" class="list-group-item list-group-item-action" id='cj-talk'>
-          <div class='media'>
-            <img class='mr-3 schedule-thumbnail rounded-circle' src='img/cj-thumb.png' alt='C.J.'>
-            <div class='media-body'>
-              <div class="d-flex justify-content-between">
-                <h5 class="mb-1">How to Catch Fish (Other Than Sea Bass)</h5>
-                <div>
-                  <span class="badge badge-pill badge-info p-2">1:00pm</span>
-                </div>
-              </div>
-              <p class="mb-1">C.J.</p>
-            </div>
-          </div>
-          <div class='collapse' id='cj-desc'>
-            <hr>
-            <p>Tired of catching sea bass? Or even worse, water eggs? C.J. shares his expertise to help you catch sea specimens that most people can hardly dream of encountering.</p>
-          </div>
-        </a>
-        <a data-toggle="collapse" data-target="#blathers-desc" class="list-group-item list-group-item-action" id='blathers-talk'>
-          <div class='media'>
-            <img class='mr-3 schedule-thumbnail rounded-circle' src='img/blathers-thumb.png' alt='Blathers'>
-            <div class='media-body'>
-              <div class="d-flex justify-content-between">
-                <h5 class="mb-1">Amazing Art, Fascinating Fish, and Fantastic Fossils (...and Beastly Bugs)</h5>
-                <div>
-                  <span class="badge badge-pill badge-info p-2">2:00pm</span>
-                </div>
-              </div>
-              <p class="mb-1">Blathers</p>
-            </div>
-          </div>
-          <div class='collapse' id='blathers-desc'>
-            <hr>
-            <p>What's new at the museum? Blathers checks in to give you the latest information on the ever-expanding collections.</p>
-            <small><em>Flick, if you're reading this - no funny business! Keep your tarantulas away from this talk!</em></small>
-          </div>
-        </a>
-        <a data-toggle="collapse" data-target="#kk-desc" class="list-group-item list-group-item-action" id='kk-concert'>
-          <div class='media'>
-            <img class='mr-3 schedule-thumbnail rounded-circle' src='img/kk-thumb.png' alt='K.K. Slider'>
-            <div class='media-body'>
-              <div class="d-flex justify-content-between">
-                <h5 class="mb-1">K.K. Slider Live in Concert</h5>
-                <div>
-                  <span class="badge badge-pill badge-info p-2">7:00pm</span>
-                </div>
-              </div>
-              <p class="mb-1">K.K. Slider</p>
-            </div>
-          </div>
-          <div class='collapse' id='kk-desc'>
-            <hr>
-            <p class='mb-2'>K.K. plays a live selection of his greatest hits. Expect to hear tunes like:</p>
-            <ul class='mb-2'>
-              <li>K.K. Disco</li>
-              <li>K.K. Metal</li>
-              <li>DJ K.K.</li>
+              </li>
             </ul>
-            <p>...and many more!</p>
           </div>
-        </a>
-      </ul><!-- /schedule -->
+          <div class="col-md text-center text-md-right">
+            <small>&copy; 2020 BellCon &amp; Nook Inc.</small>
+            <br>
+            <small>Animal Crossing and Nintendo are registered trademarks of Nintendo of America.</small>
+          </div>
+        </div><!-- /footer -->
 
-      <!-- callout button -->
-      <button type="button" class="btn btn-outline-info btn-lg d-block mx-auto my-5" data-toggle="modal" data-target="#register">Don't Miss Out, Register Now</button>
-
-   	  <!-- signup form -->
-			<hr>
-			<div class="row py-4 text-muted">
-				<div class="col-md col-xl-5">
-					<p><strong>About Nook Inc.</strong></p>
-					<p>Nook Inc. provides travel and development opportunities, specializing in transforming deserted islands into thriving towns.</p>
-				</div>
-			  <div class="col-md col-xl-5 ml-auto">
-			  	<p><strong>Stay up-to-date on BellCon</strong></p>
-			    <div class="input-group">
-			      <input type="text" class="form-control" placeholder="Email">
-			      <span class="input-group-btn">
-			        <button class="btn btn-primary" type="button">Sign up</button>
-			      </span>
-			    </div>
-			  </div>
-			</div>
-			<hr><!-- /signup form -->
-
-      <!-- footer -->
- 			<div class="row py-3">
-				<div class="col-md-7 col-lg-5  mb-3 mb-md-0">
-          <ul class="nav justify-content-center justify-content-md-start">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Travel</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Development</a>
-            </li>
-            <li class="nav-item">
-              <div class="btn-group dropup">
-                <button type="button" class="btn btn-outline-secondary">Other Cons</button>
-                <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">HyruleCon</a>
-                  <a class="dropdown-item" href="#">KoopaCon</a>
-                  <a class="dropdown-item" href="#">Pok&#233;Con</a>
-                  <a class="dropdown-item" href="#">SquidCon</a>
-                </div>
-              </div>
-            </li>
-          </ul>
-				</div>
-				<div class="col-md text-center text-md-right">
-          <small>&copy; 2020 BellCon &amp; Nook Inc.</small>
-          <br>
-          <small>Animal Crossing and Nintendo are registered trademarks of Nintendo of America.</small>
-				</div>
-			</div><!-- /footer -->
-
-    </div><!-- /.container -->
+      </div><!-- /.container -->
+    </div><!-- /.fluid-container -->
 
     <!--=====================================
         FORM MODAL

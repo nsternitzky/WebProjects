@@ -12,12 +12,20 @@ a {
   font-size: 1rem;
 }
 
-.jumbotron {
+.jumbotron-bg {
+  height: 343px;
+  width: 100%;
+  position: fixed;
+  z-index: -1;
   background-image: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0.5) 100%),
                     url('../img/nook-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center bottom;
+}
+
+.jumbotron {
+  background: transparent;
 }
 
 .text-shadow {
@@ -33,6 +41,16 @@ a {
 .schedule-thumbnail {
   max-height: 48px;
   object-fit: contain;
+}
+
+/* Small devices and up */
+
+@media (min-width: 576px) {
+
+  .jumbotron-bg {
+    height: 407px;
+  }
+
 }
 
 /* Medium devices and up */
