@@ -1,5 +1,6 @@
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 56px;
 }
 
 a {
@@ -21,15 +22,6 @@ a {
 
 .text-shadow {
   text-shadow: 1px 1px 5px #000;
-}
-
-#about {
-  padding-top: 4.5rem;
-}
-
-.section-header {
-  padding-top: 5rem;
-  padding-bottom: 2.5rem;
 }
 
 .card-img-top {
