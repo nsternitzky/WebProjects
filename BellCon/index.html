@@ -335,7 +335,7 @@
           </div>
           <div class="modal-body">
             <!-- registration form -->
-            <form>
+            <form class='was-validated' novalidate>
               <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
@@ -345,15 +345,22 @@
               <h5 class="mb-4">Basic Info</h5>
               <div class="form-group">
                 <label class="form-control-label" for="name">Name:</label>
-                <input type="text" class="form-control" id="name">
+                <input type="text" class="form-control" id="name" required>
+                <div class='invalid-feedback'>
+                  Please enter your name.
+                </div>
               </div>
               <div class="form-group">
                 <label class="form-control-label" for="email">Email:</label>
-                <input type="email" class="form-control" id="email">
+                <input type="email" class="form-control" id="email" required>
+                <div class='invalid-feedback'>
+                  Please enter your email.
+                </div>
               </div>
               <div class="form-group">
                 <label for="role">Personality Type:</label>
-                <select class="custom-select form-control" id="role">
+                <select class="custom-select form-control" id="role" required>
+                  <option hidden value=''>Select</option>
 									<option value="cranky">Cranky</option>
 									<option value="jock">Jock</option>
 									<option value="lazy">Lazy</option>
@@ -363,6 +370,9 @@
                   <option value="normal">Normal</option>
                   <option value="uchi">Uchi</option>
                 </select>
+                <div class='invalid-feedback'>
+                  Please select a personality type.
+                </div>
               </div>
 
               <hr class="my-4">
@@ -410,17 +420,26 @@
               <div class="form-row">
                 <div class="col-lg-6 form-group">
                   <label for="cc-num">Card Number:</label>
-                  <input class="form-control" id="cc-num" type="text">
+                  <input class="form-control" id="cc-num" type="text" required>
+                  <div class='invalid-feedback'>
+                    Please enter a card number.
+                  </div>
                 </div>
 
                 <div class="col-lg form-group">
                   <label for="zip">Zip Code:</label>
-                  <input class="form-control" id="zip" type="text">
+                  <input class="form-control" id="zip" type="text" required>
+                  <div class='invalid-feedback'>
+                    Please enter zip code.
+                  </div>
                 </div>
 
                 <div class="col-lg form-group">
                   <label for="cvv">CVV:</label>
-                  <input class="form-control" id="cvv" type="text">
+                  <input class="form-control" id="cvv" type="text" required>
+                  <div class='invalid-feedback'>
+                    Please enter CVV.
+                  </div>
                 </div>
               </div>
 
@@ -428,7 +447,8 @@
                 <label class="col-lg-12">Expiration Date:</label>
 
                 <div class="form-group col-lg-8">
-                  <select class="custom-select form-control" id="exp-month">
+                  <select class="custom-select form-control" id="exp-month" required>
+                    <option hidden value=''>Select</option>
                     <option value="1">1 - January</option>
                     <option value="2">2 - February</option>
                     <option value="3">3 - March</option>
@@ -442,16 +462,23 @@
                     <option value="11">11 - November</option>
                     <option value="12">12 - December</option>
                   </select>
+                  <div class='invalid-feedback'>
+                    Please select expiration month.
+                  </div>
                 </div>
 
                 <div class="form-group col-lg">
-                  <select class="custom-select form-control" id="exp-year">
+                  <select class="custom-select form-control" id="exp-year" required>
+                    <option hidden value=''>Select</option>
                     <option value="2016">2020</option>
                     <option value="2017">2021</option>
                     <option value="2018">2022</option>
                     <option value="2019">2023</option>
                     <option value="2020">2024</option>
                   </select>
+                  <div class='invalid-feedback'>
+                    Please select expiration year.
+                  </div>
                 </div>
               </div>
 
