@@ -3,6 +3,7 @@ const navbarMenu = document.querySelector('#navbarNavAltMarkup');
 const highlightsList = document.querySelector('#highlights-list');
 const forms = document.getElementsByClassName('needs-validation');
 
+// validate registration form input after clicking submit button
 const validation = Array.prototype.filter.call(forms, function(form) {
     form.addEventListener('submit', function(event) {
       if (form.checkValidity() === false) {
@@ -13,12 +14,14 @@ const validation = Array.prototype.filter.call(forms, function(form) {
     }, false);
 });
 
+// collapse navbar after clicking a link inside it
 navbarList.addEventListener('click', () => {
     if (navbarMenu.classList.contains('show')) {
         navbarMenu.classList.toggle('show');
     }
 });
 
+// expand schedule list item after clicking link to it from highlights list item
 highlightsList.addEventListener('click', (e) => {
     const talkId = e.target.getAttribute('href');
     const speaker = talkId.split('-')[0];
