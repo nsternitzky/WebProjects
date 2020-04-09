@@ -2,6 +2,26 @@ const navbarList = document.querySelector('.navbar-nav');
 const navbarMenu = document.querySelector('#navbarNavAltMarkup');
 const highlightsList = document.querySelector('#highlights-list');
 const forms = document.getElementsByClassName('needs-validation');
+const checkboxGroup = document.querySelector('.checkbox-group');
+
+// ensure at least one checkbox is checked
+function validateInterestsCheckboxGroup() {
+    var failed = false;
+    const interests = document.querySelectorAll('[name="interests"]');
+    const interestsChecked = document.querySelectorAll('[name="interests"]:checked');
+
+    if (interestsChecked.length === 0) {
+        for (i=0; i < interests.length; i++) {
+            interests[i].required = true;
+        }
+        failed = true;
+    } else {
+        for (i=0; i < interests.length; i++) {
+            interests[i].required = false;
+        }
+    }
+    return failed;
+}
 
 // collapse navbar after clicking a link inside it
 navbarList.addEventListener('click', () => {
@@ -26,19 +46,7 @@ highlightsList.addEventListener('click', (e) => {
 const validation = Array.prototype.filter.call(forms, function(form) {
     form.addEventListener('submit', function(event) {
         var failed = false;
-        const interests = document.querySelectorAll('[name="interests"]');
-        const interestsChecked = document.querySelectorAll('[name="interests"]:checked');
-
-        if (interestsChecked.length === 0) {
-            for (i=0; i < interests.length; i++) {
-                interests[i].required = true;
-            }
-            failed = true;
-        } else {
-            for (i=0; i < interests.length; i++) {
-                interests[i].required = false;
-            }
-        }
+        failed = validateInterestsCheckboxGroup();
 
         if (form.checkValidity() === false) {
             failed = true;
@@ -51,3 +59,6 @@ const validation = Array.prototype.filter.call(forms, function(form) {
         form.classList.add('was-validated');
         }, false);
 });
+
+// validate checkbox input in real time
+checkboxGroup.addEventListener('click', validateInterestsCheckboxGroup);
