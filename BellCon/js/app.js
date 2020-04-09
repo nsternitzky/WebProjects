@@ -1,6 +1,17 @@
 const navbarList = document.querySelector('.navbar-nav');
 const navbarMenu = document.querySelector('#navbarNavAltMarkup');
 const highlightsList = document.querySelector('#highlights-list');
+const forms = document.getElementsByClassName('needs-validation');
+
+const validation = Array.prototype.filter.call(forms, function(form) {
+    form.addEventListener('submit', function(event) {
+      if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add('was-validated');
+    }, false);
+});
 
 navbarList.addEventListener('click', () => {
     if (navbarMenu.classList.contains('show')) {
