@@ -1,17 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkers</title>
-    <link rel = "stylesheet" href = "css/style.css">
-</head>
-<body>
-    <script src = "js/Game.js"></script>
-    <script src = "js/Board.js"></script>
-    <script src = "js/Space.js"></script>
-    <script src = "js/Player.js"></script>
-    <script src = "js/Piece.js"></script>
-    <script src = "js/app.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Checkers</title>
+        <link rel = "stylesheet" href = "css/style.css">
+    </head>
+    <body>
+        
+        <!-- 
+            #begin-game: start game button
+        -->
+        <button id = "begin-game">
+            Start
+        </button>
+
+
+        <!-- 
+            #game-scene: container for entire play area
+            #play-area: container for the board
+        -->
+        <div id = "game-scene">
+            <div id = "play-area">
+
+                <!--
+                    #game-over will eventually display a game over message to the players
+                -->
+                <div id = "game-over">
+                </div>
+            
+                <!--
+                    #game-board-underlay: container for HTML pieces
+                -->
+                <div id = "game-board-underlay">
+                    <div id = "piece" data-column = "0">
+                    </div>
+                </div>
+            
+            
+                <!-- 
+                    SVGs were used to create the board and the spaces
+                -->
+                <svg id = "game-board">
+                    <defs>
+                        <!--
+                            #mask: container for Space SVGs 
+                        -->
+                        <mask id="mask" x="0" y="0" width="548" height="472">
+                            <rect x = "0" y = "0" height = "472" width = "548" fill = "white">
+                        </mask>
+                    </defs>
+                    
+                    <rect id = "board-back" x="0" y="0" width="548" height="472" mask="url(#mask)" fill-opacity = "1" fill = "#5FCF80"/>
+                </svg>
+        
+                <div style = "clear:both"></div>
+            </div>
+        </div>
+
+        <script src = "js/Game.js"></script>
+        <script src = "js/Board.js"></script>
+        <script src = "js/Space.js"></script>
+        <script src = "js/Player.js"></script>
+        <script src = "js/Piece.js"></script>
+        <script src = "js/app.js"></script>
+    </body>
 </html>
