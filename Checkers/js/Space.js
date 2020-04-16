@@ -5,4 +5,11 @@ class Space {
         this.id = `space-${x}-${y}`;
         this.piece = null;
     }
+
+    /**
+     * Draws SVG space
+     */
+	drawHTMLSpace() {    
+            
+    }
 }
