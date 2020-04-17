@@ -22,4 +22,12 @@ class Space {
 
         document.querySelector('#game-board').appendChild(HTMLSpace);
     }
+
+    /**
+     * Updates space to reflect a checker has been placed on it
+     * @param {Object} checker - The checker on this space
+     */
+	mark(checker) {
+		this.checker = checker;
+	}
 }

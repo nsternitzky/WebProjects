@@ -42,6 +42,6 @@ class Game {
             }
         }
         this.players[1].drawHTMLCheckers(playerTwoSpaces);
-        // this.ready = true;
+        this.ready = true;
     }
 }
