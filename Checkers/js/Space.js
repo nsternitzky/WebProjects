@@ -3,7 +3,7 @@ class Space {
         this.x = x;
         this.y = y;
         this.id = `space-${x}-${y}`;
-        this.piece = null;
+        this.checker = null;
     }
 
     /**

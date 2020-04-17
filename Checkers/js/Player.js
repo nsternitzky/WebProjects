@@ -4,22 +4,32 @@ class Player {
         this.id = id;
         this.color = color;
         this.active = active;
-        this.pieces = this.createPieces(12);
+        this.checkers = this.createCheckers(12);
     }
 
     /**
-     * Creates piece objects for player
-     * @param   {integer}   num - Number of Piece objects to be created
-     * @return  {array}     pieces - an array of new Piece objects
+     * Creates checker objects for player
+     * @param   {integer}   num - Number of Checker objects to be created
+     * @return  {array}     checkers - an array of new Checker objects
      */
-    createPieces(num) {
-        const pieces = [];
+    createCheckers(num) {
+        const checkers = [];
         
         for (let i = 0; i < num; i++) {
-            let piece = new Piece(i, this);
-            pieces.push(piece);
+            let checker = new Checker(i, this);
+            checkers.push(checker);
         }
         
-        return pieces;
+        return checkers;
+    }
+
+    /** 
+     * Draws associated HTML checkers for player's checkers
+     * @param   {Array}     spaces - array of Space objects to place checkers in
+     */
+    drawHTMLCheckers(spaces) {
+        for (let i=0; i < this.checkers.length; i++) {
+            this.checkers[i].drawHTMLChecker(spaces[i], this.color);
+        }
     }
 }
