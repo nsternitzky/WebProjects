@@ -12,6 +12,7 @@ class Space {
 	drawHTMLSpace() {    
         const HTMLSpace = document.createElement('div');
         HTMLSpace.setAttribute('id', this.id);
+        HTMLSpace.classList.add('space');
 
         if ((this.x % 2 === 0 && this.y % 2 === 0) ||
             (this.x % 2 === 1 && this.y % 2 === 1)) {

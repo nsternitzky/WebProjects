@@ -4,6 +4,7 @@ class Checker {
         this.id = `checker-${owner.id}-${index}`;
         this.isInPlay = true;
         this.isKing = false;
+        this.active = false;
     }
 
     /**

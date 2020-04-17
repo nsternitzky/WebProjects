@@ -16,6 +16,14 @@ class Game {
     }
 
     /** 
+     * Returns active player
+     * @return  {Object}    player - The active player
+     */
+	get activePlayer() {
+        return this.players.find(player => player.active);
+	}  
+
+    /** 
      * Initializes game
      */
     startGame(){
@@ -43,5 +51,38 @@ class Game {
         }
         this.players[1].drawHTMLCheckers(playerTwoSpaces);
         this.ready = true;
+    }
+
+    /**
+     * Branches code depending on space clicked by player
+     * @param   {Object}    event - click event object
+     */
+    handleClick(event) {
+        if (this.ready) {
+            //check for active checker
+            if (this.activePlayer.checkers.find(checker => checker.active) === undefined) {//no active checker - first click
+
+                //player clicked empty space or space with other player's checker - do nothing
+
+                //player clicked their own checker directly - make checker active
+                if (event.target.classList.contains('checker')) {
+                    const checker = this.activePlayer.checkers.find(checker => checker.id === event.target.id);
+                    if (checker !== undefined) {
+                        checker.active = true;
+                    }
+                }
+
+                //player clicked space with their own checker - make checker active
+
+            } else {//active checker - second click
+
+            //second click - player clicked empty space - check for valid move, then move
+
+            //second click - player clicked checker directly - invalid move
+
+            //second click - player clicked space with checker - invalid move
+
+            }
+        }
     }
 }
