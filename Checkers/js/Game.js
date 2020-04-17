@@ -16,7 +16,7 @@ class Game {
     }
 
     /** 
-     * Initializes game. 
+     * Initializes game
      */
     startGame(){
         this.board.drawHTMLBoard();
