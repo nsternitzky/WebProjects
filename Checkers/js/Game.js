@@ -60,19 +60,24 @@ class Game {
     handleClick(event) {
         if (this.ready) {
             //check for active checker
-            if (this.activePlayer.checkers.find(checker => checker.active) === undefined) {//no active checker - first click
+            if (!this.activePlayer.checkers.find(checker => checker.active)) {//no active checker - first click
 
-                //player clicked empty space or space with other player's checker - do nothing
-
-                //player clicked their own checker directly - make checker active
+                //check that player clicked on checker or space with checker
+                let checkerDiv = null;
                 if (event.target.classList.contains('checker')) {
-                    const checker = this.activePlayer.checkers.find(checker => checker.id === event.target.id);
-                    if (checker !== undefined) {
-                        checker.active = true;
-                    }
+                    checkerDiv = event.target;
+                } else if (event.target.classList.contains('space') && event.target.children[0]) {
+                    checkerDiv = event.target.children[0];
                 }
 
-                //player clicked space with their own checker - make checker active
+                //check that checker belongs to player, then make it active
+                if (checkerDiv) {
+                    const checker = this.activePlayer.checkers.find(checker => checker.id === checkerDiv.id);
+                    if (checker) {
+                        checker.active = true;
+                        checkerDiv.parentElement.classList.toggle('active');
+                    }
+                }
 
             } else {//active checker - second click
 
