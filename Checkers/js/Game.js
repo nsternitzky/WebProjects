@@ -110,6 +110,7 @@ class Game {
         const row = clickedSpaceDiv.id.charAt(8);
         const clickedSpace = this.board.spaces[col][row];
         const activeCheckerSpace = this.activePlayer.activeChecker.space;
+        let opponentChecker = null;
 
         if (this.activePlayer.id === this.players[0].id) {//player one
 
@@ -120,10 +121,18 @@ class Game {
                 this.moveChecker(clickedSpace);
 
             } else if (clickedSpace.y === activeCheckerSpace.y + 2 &&
-                ((clickedSpace.x === activeCheckerSpace.x - 2 && this.checkForOpponentChecker(activeCheckerSpace.x - 1, activeCheckerSpace.y + 1)) ||
-                (clickedSpace.x === activeCheckerSpace.x + 2 && this.checkForOpponentChecker(activeCheckerSpace.x + 1, activeCheckerSpace.y + 1)))) {//jump opponent's checker
+                    (
+                        (clickedSpace.x === activeCheckerSpace.x - 2 &&
+                            (opponentChecker = this.checkForOpponentChecker(activeCheckerSpace.x - 1, activeCheckerSpace.y + 1))
+                        )
+                        ||
+                        (clickedSpace.x === activeCheckerSpace.x + 2 && 
+                            (opponentChecker = this.checkForOpponentChecker(activeCheckerSpace.x + 1, activeCheckerSpace.y + 1))
+                        )
+                    )
+                ) {//jump opponent's checker
 
-                this.jumpChecker(clickedSpace);
+                this.jumpChecker(clickedSpace, opponentChecker);
 
             }
 
@@ -135,10 +144,18 @@ class Game {
                 this.moveChecker(clickedSpace);
 
             } else if (clickedSpace.y === activeCheckerSpace.y - 2 &&
-                ((clickedSpace.x === activeCheckerSpace.x - 2 && this.checkForOpponentChecker(activeCheckerSpace.x - 1, activeCheckerSpace.y - 1)) ||
-                (clickedSpace.x === activeCheckerSpace.x + 2 && this.checkForOpponentChecker(activeCheckerSpace.x + 1, activeCheckerSpace.y - 1)))) {//jump opponent's checker
+                    (
+                        (clickedSpace.x === activeCheckerSpace.x - 2 && 
+                            (opponentChecker = this.checkForOpponentChecker(activeCheckerSpace.x - 1, activeCheckerSpace.y - 1))
+                        )
+                        ||
+                        (clickedSpace.x === activeCheckerSpace.x + 2 && 
+                            (opponentChecker = this.checkForOpponentChecker(activeCheckerSpace.x + 1, activeCheckerSpace.y - 1))
+                        )
+                    )
+                ) {//jump opponent's checker
 
-                this.jumpChecker(clickedSpace);
+                this.jumpChecker(clickedSpace, opponentChecker);
 
             }
         }
@@ -146,13 +163,17 @@ class Game {
 
     /**
      * Checks space located at (x,y) for opponent's checker
-     * @param   {integer}   x - x coordinate of space to be checked
-     * @param   {integer}   y - y coordinate of space to be checked
-     * @returns {boolean}   indicates whether opponent has checker in indicated space
+     * @param   {integer}       x - x coordinate of space to be checked
+     * @param   {integer}       y - y coordinate of space to be checked
+     * @returns {Object | null} checker - opponent's checker in indicated space (if there is one)
      */
     checkForOpponentChecker(x,y) {
+        let checker = null;
         const space = this.board.spaces[x][y];
-        return (space.checker && space.checker.owner !== this.activePlayer);
+        if (space.checker && space.checker.owner !== this.activePlayer) {
+            checker = space.checker;
+        }
+        return checker;
     }
 
     /**
