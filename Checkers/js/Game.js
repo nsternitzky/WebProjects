@@ -148,8 +148,19 @@ class Game {
     updateGameState() {
         if (true) {//no win - keep playing
 
+            this.switchPlayers();
+
         } else {//win achieved
 
         }
+    }
+
+    /** 
+     * Switches active player
+     */
+	switchPlayers() {
+		for (let player of this.players) {
+			player.active = player.active === true ? false : true;
+		}
     }
 }
