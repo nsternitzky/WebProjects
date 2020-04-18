@@ -21,6 +21,7 @@ class Checker {
 
         document.querySelector(`#${space.id}`).appendChild(HTMLChecker);
         this.mark(space);
+        space.mark(this);
     }
 
     /**
