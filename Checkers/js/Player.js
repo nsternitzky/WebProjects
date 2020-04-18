@@ -23,6 +23,14 @@ class Player {
         return checkers;
     }
 
+    /**
+     * Gets the player's active checker
+     * @return  {Object}    checker - player's current active checker
+     */
+	get activeChecker() {
+        return this.checkers.find(checker => checker.active);
+    }
+
     /** 
      * Draws associated HTML checkers for player's checkers
      * @param   {Array}     spaces - array of Space objects to place checkers in

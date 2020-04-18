@@ -29,6 +29,7 @@ class Game {
     startGame(){
         this.board.drawHTMLBoard();
 
+        //draw player one's checkers
         const playerOneSpaces = [];
         for (let y=0; y < 3; y++) {
             for (let x=0; x < this.board.columns; x++) {
@@ -40,6 +41,7 @@ class Game {
         }
         this.players[0].drawHTMLCheckers(playerOneSpaces);
 
+        //draw player two's checkers
         const playerTwoSpaces = [];
         for (let y=this.board.rows - 1; y > this.board.rows - 4; y--) {
             for (let x=0; x < this.board.columns; x++) {
@@ -50,6 +52,7 @@ class Game {
             }
         }
         this.players[1].drawHTMLCheckers(playerTwoSpaces);
+
         this.ready = true;
     }
 
@@ -59,35 +62,44 @@ class Game {
      */
     handleClick(event) {
         if (this.ready) {
-            //check for active checker
-            if (!this.activePlayer.checkers.find(checker => checker.active)) {//no active checker - first click
+            //check for active checker and get HTML element clicked by player
+            const activeChecker = this.activePlayer.activeChecker;
+            const clickedDiv = this.getClickedDiv(event);
 
-                //check that player clicked on checker or space with checker
-                let checkerDiv = null;
-                if (event.target.classList.contains('checker')) {
-                    checkerDiv = event.target;
-                } else if (event.target.classList.contains('space') && event.target.children[0]) {
-                    checkerDiv = event.target.children[0];
-                }
+            if (!activeChecker) {//no active checker - first click
 
-                //check that checker belongs to player, then make it active
-                if (checkerDiv) {
-                    const checker = this.activePlayer.checkers.find(checker => checker.id === checkerDiv.id);
-                    if (checker) {
+                //check that player clicked on a checker
+                if (clickedDiv.classList.contains('checker')) {
+                    const checker = this.activePlayer.checkers.find(checker => checker.id === clickedDiv.id);
+                    if (checker) {//player clicked their own checker - make it active
                         checker.active = true;
-                        checkerDiv.parentElement.classList.toggle('active');
+                        clickedDiv.parentElement.classList.toggle('active');
                     }
                 }
 
-            } else {//active checker - second click
+            } else if (clickedDiv.id === activeChecker.id) {//player clicked active checker - make it inactive
+                
+                activeChecker.active = false;
+                clickedDiv.parentElement.classList.toggle('active');
 
-            //second click - player clicked empty space - check for valid move, then move
-
-            //second click - player clicked checker directly - invalid move
-
-            //second click - player clicked space with checker - invalid move
-
+            } else if (false) {//player clicked empty space - check for valid move, then move
+                
             }
         }
+    }
+
+    /**
+     * Returns div for item clicked - empty space or checker (including if player clicked space containing checker)
+     * @param   {Object}    event - click event object
+     * @returns {Object}    clickedDiv - HTML element that player clicked on (or checker in space that player clicked on)
+     */
+    getClickedDiv(event) {
+        let clickedDiv = null;
+        if (event.target.classList.contains('space') && event.target.children[0]) {
+            clickedDiv = event.target.children[0];
+        } else {
+            clickedDiv = event.target;
+        }
+        return clickedDiv;
     }
 }
