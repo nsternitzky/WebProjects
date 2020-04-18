@@ -20,7 +20,6 @@ class Checker {
         HTMLChecker.style.backgroundColor = color;
 
         document.querySelector(`#${space.id}`).appendChild(HTMLChecker);
-        space.mark(this);
         this.mark(space);
     }
 

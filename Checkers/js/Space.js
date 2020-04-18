@@ -3,7 +3,6 @@ class Space {
         this.x = x;
         this.y = y;
         this.id = `space-${x}-${y}`;
-        this.checker = null;
     }
 
     /**
@@ -23,12 +22,4 @@ class Space {
 
         document.querySelector('#game-board').appendChild(HTMLSpace);
     }
-
-    /**
-     * Updates space to reflect a checker has been placed on it
-     * @param {Object} checker - The checker on this space
-     */
-	mark(checker) {
-		this.checker = checker;
-	}
 }
