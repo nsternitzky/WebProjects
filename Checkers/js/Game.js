@@ -2,7 +2,6 @@ class Game {
     constructor() {
         this.board = new Board();
         this.players = this.createPlayers();
-        this.ready = false;
     }
 
     /** 
@@ -52,8 +51,6 @@ class Game {
             }
         }
         this.players[1].drawHTMLCheckers(playerTwoSpaces);
-
-        this.ready = true;
     }
 
     /**
@@ -61,33 +58,31 @@ class Game {
      * @param   {Object}    event - click event object
      */
     handleClick(event) {
-        if (this.ready) {
-            //check for active checker and get HTML element clicked by player
-            const activeChecker = this.activePlayer.activeChecker;
-            const clickedDiv = this.getClickedDiv(event);
+        //check for active checker and get HTML element clicked by player
+        const activeChecker = this.activePlayer.activeChecker;
+        const clickedDiv = this.getClickedDiv(event);
 
-            if (!activeChecker) {//no active checker - first click
+        if (!activeChecker) {//no active checker - first click
 
-                //check that player clicked on a checker
-                if (clickedDiv.classList.contains('checker')) {
-                    const checker = this.activePlayer.checkers.find(checker => checker.id === clickedDiv.id);
-                    if (checker) {//player clicked their own checker - make it active
-                        checker.active = true;
-                        clickedDiv.parentElement.classList.toggle('active');
-                    }
+            //check that player clicked on a checker
+            if (clickedDiv.classList.contains('checker')) {
+                const checker = this.activePlayer.checkers.find(checker => checker.id === clickedDiv.id);
+                if (checker) {//player clicked their own checker - make it active
+                    checker.active = true;
+                    clickedDiv.parentElement.classList.toggle('active');
                 }
-
-            } else if (clickedDiv.id === activeChecker.id) {//player clicked active checker - make it inactive
-                
-                activeChecker.active = false;
-                clickedDiv.parentElement.classList.toggle('active');
-
-            } else if (clickedDiv.classList.contains('space') &&
-                       !clickedDiv.children[0]) {//player clicked empty space - move (if valid move)
-                
-                this.attemptMove(clickedDiv);
-
             }
+
+        } else if (clickedDiv.id === activeChecker.id) {//player clicked active checker - make it inactive
+            
+            activeChecker.active = false;
+            clickedDiv.parentElement.classList.toggle('active');
+
+        } else if (clickedDiv.classList.contains('space') &&
+                    !clickedDiv.children[0]) {//player clicked empty space - move (if valid move)
+            
+            this.attemptMove(clickedDiv);
+
         }
     }
 
@@ -143,5 +138,18 @@ class Game {
         document.getElementById(this.activePlayer.activeChecker.id).remove();
         this.activePlayer.activeChecker.drawHTMLChecker(targetSpace, this.activePlayer.color);
         this.activePlayer.activeChecker.active = false;
+
+        this.updateGameState();
+    }
+
+    /**
+     * Updates game state after checker is moved
+     */
+    updateGameState() {
+        if (true) {//no win - keep playing
+
+        } else {//win achieved
+
+        }
     }
 }
