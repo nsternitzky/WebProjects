@@ -5,6 +5,7 @@ class Checker {
         this.isInPlay = true;
         this.isKing = false;
         this.active = false;
+        this.space = null;
     }
 
     /**
@@ -20,5 +21,14 @@ class Checker {
 
         document.querySelector(`#${space.id}`).appendChild(HTMLChecker);
         space.mark(this);
+        this.mark(space);
     }
+
+    /**
+     * Updates checker to reflect space it's been placed on
+     * @param   {Object}    space - space where checked has been placed
+     */
+	mark(space) {
+		this.space = space;
+	}
 }

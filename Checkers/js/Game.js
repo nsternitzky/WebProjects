@@ -82,8 +82,11 @@ class Game {
                 activeChecker.active = false;
                 clickedDiv.parentElement.classList.toggle('active');
 
-            } else if (false) {//player clicked empty space - check for valid move, then move
+            } else if (clickedDiv.classList.contains('space') &&
+                       !clickedDiv.children[0]) {//player clicked empty space - move (if valid move)
                 
+                this.attemptMove(clickedDiv);
+
             }
         }
     }
@@ -101,5 +104,44 @@ class Game {
             clickedDiv = event.target;
         }
         return clickedDiv;
+    }
+
+    /**
+     * Checks validity of checker move
+     * @param   {Object}    clickedSpaceDiv - HTML space clicked by player
+     */
+    attemptMove(clickedSpaceDiv) {
+        const col = clickedSpaceDiv.id.charAt(6);
+        const clickedSpace = this.board.spaces[col].find(space => space.id === clickedSpaceDiv.id);
+        const activeCheckerSpace = this.activePlayer.activeChecker.space;
+
+        if (this.activePlayer.id === this.players[0].id) {//player one
+
+            if (clickedSpace.y === activeCheckerSpace.y + 1 &&
+                (clickedSpace.x === activeCheckerSpace.x - 1 ||
+                clickedSpace.x === activeCheckerSpace.x + 1)) {
+
+                this.moveChecker(clickedSpace);
+            }
+
+        } else {//player two
+            if (clickedSpace.y === activeCheckerSpace.y - 1 &&
+                (clickedSpace.x === activeCheckerSpace.x - 1 ||
+                clickedSpace.x === activeCheckerSpace.x + 1)) {
+                    
+                this.moveChecker(clickedSpace);
+            }
+        }
+    }
+
+    /**
+     * Moves checker to space provided
+     * @param   {Object}    targetSpace - space checker will move to
+     */
+    moveChecker(targetSpace) {
+        document.getElementById(this.activePlayer.activeChecker.space.id).classList.toggle('active');
+        document.getElementById(this.activePlayer.activeChecker.id).remove();
+        this.activePlayer.activeChecker.drawHTMLChecker(targetSpace, this.activePlayer.color);
+        this.activePlayer.activeChecker.active = false;
     }
 }
