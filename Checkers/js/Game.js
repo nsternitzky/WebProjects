@@ -136,7 +136,9 @@ class Game {
                     )
                 ) {//jump opponent's checker
 
-                activeChecker.jumpChecker(clickedSpace, opponentChecker);
+                activeChecker.jumpChecker(clickedSpace, opponentChecker, function() {
+                    game.updateGameState();
+                });
 
             }
 
@@ -161,7 +163,9 @@ class Game {
                     )
                 ) {//jump opponent's checker
 
-                activeChecker.jumpChecker(clickedSpace, opponentChecker);
+                activeChecker.jumpChecker(clickedSpace, opponentChecker, function() {
+                    game.updateGameState();
+                });
 
             }
         }
