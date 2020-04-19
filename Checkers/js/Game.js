@@ -200,10 +200,23 @@ class Game {
     updateGameState() {
         if (this.opposingPlayer.remainingCheckers.length > 0) {//opposing player still has checkers left - no win - keep playing
 
+            this.checkForKing();
+            this.activePlayer.activeChecker.active = false;
             this.switchPlayers();
 
         } else {//win achieved
             console.log(`${this.activePlayer.name} wins`);
+        }
+    }
+
+    /**
+     * Checks whether active checker becomes king after being moved
+     */
+    checkForKing() {
+        const activeCheckerSpace = this.activePlayer.activeChecker.space;
+        if ((this.activePlayer.id === 1 && activeCheckerSpace.y === this.board.rows - 1) ||
+            (this.activePlayer.id === 2 && activeCheckerSpace.y === 0)) {
+            this.activePlayer.activeChecker.makeKing();
         }
     }
 

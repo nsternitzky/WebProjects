@@ -64,9 +64,17 @@ class Checker {
         document.getElementById(this.space.id).classList.toggle('active');
         document.getElementById(this.id).remove();
         this.space.mark(null);
+
         this.drawHTMLChecker(targetSpace, this.owner.color);
-        this.active = false;
 
         reset();
+    }
+
+    /**
+     * Makes checker into a king
+     */
+    makeKing() {
+        this.isKing = true;
+        document.getElementById(this.id).classList.add('king');
     }
 }

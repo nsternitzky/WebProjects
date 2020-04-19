@@ -28,3 +28,7 @@
     border-radius: 100%;
     margin: 6.25%;
 }
+
+.king {
+    border: 2px solid yellow;
+}
