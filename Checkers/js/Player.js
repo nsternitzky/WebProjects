@@ -31,6 +31,14 @@ class Player {
         return this.checkers.find(checker => checker.active);
     }
 
+    /**
+     * Gets the player's remaining checkers
+     * @returns {Array}    checkers - array of player's checkers remaining in play
+     */
+    get remainingCheckers() {
+        return this.checkers.filter(checker => checker.isInPlay);
+    }
+
     /** 
      * Draws associated HTML checkers for player's checkers
      * @param   {Array}     spaces - array of Space objects to place checkers in

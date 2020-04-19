@@ -20,7 +20,15 @@ class Game {
      */
 	get activePlayer() {
         return this.players.find(player => player.active);
-	}  
+    }
+    
+    /**
+     * Returns opposing (inactive) player
+     * @returns {Object}    player - the opposing player
+     */
+    get opposingPlayer() {
+        return this.players.find(player => !player.active);
+    }
 
     /** 
      * Initializes game
@@ -190,12 +198,12 @@ class Game {
      * Updates game state after checker is moved
      */
     updateGameState() {
-        if (true) {//no win - keep playing
+        if (this.opposingPlayer.remainingCheckers.length > 0) {//opposing player still has checkers left - no win - keep playing
 
             this.switchPlayers();
 
         } else {//win achieved
-
+            console.log(`${this.activePlayer.name} wins`);
         }
     }
 
