@@ -62,16 +62,13 @@ class Checker {
     /**
      * Moves checker to space provided
      * @param   {Object}    targetSpace - space checker will move to
-     * @param   {function}  reset - function to call after checker has been moved
      */
-    moveChecker(targetSpace, reset) {
+    moveChecker(targetSpace) {
         document.getElementById(this.space.id).classList.toggle('active');
         document.getElementById(this.id).remove();
         this.space.mark(null);
 
         this.drawHTMLChecker(targetSpace, this.owner.color);
-
-        reset();
     }
 
     /**

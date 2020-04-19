@@ -121,6 +121,8 @@ class Game {
         const activeCheckerSpace = activeChecker.space;
         const game = this;
         let opponentChecker = null;
+        let checkerWasMoved = false;
+        let checkerWasJumped = false;
 
         if (this.activePlayer.id === 1 || this.activePlayer.activeChecker.isKing) {//player one or king checker - move down the board
 
@@ -128,9 +130,8 @@ class Game {
                 (clickedSpace.x === activeCheckerSpace.x - 1 ||
                 clickedSpace.x === activeCheckerSpace.x + 1)) {//basic move forward
 
-                activeChecker.moveChecker(clickedSpace, function() {
-                    game.updateGameState();
-                });
+                activeChecker.moveChecker(clickedSpace);
+                checkerWasMoved = true;
 
             } else if (clickedSpace.y === activeCheckerSpace.y + 2 &&
                     (
@@ -144,10 +145,9 @@ class Game {
                     )
                 ) {//jump opponent's checker
 
-                activeChecker.jumpChecker(clickedSpace, opponentChecker, function() {
-                    game.updateGameState();
-                });
-
+                activeChecker.jumpChecker(clickedSpace, opponentChecker);
+                checkerWasMoved = true;
+                checkerWasJumped = true;
             }
 
         } 
@@ -157,9 +157,8 @@ class Game {
                 (clickedSpace.x === activeCheckerSpace.x - 1 ||
                 clickedSpace.x === activeCheckerSpace.x + 1)) {//basic move forward
                     
-                activeChecker.moveChecker(clickedSpace, function() {
-                    game.updateGameState();
-                });
+                activeChecker.moveChecker(clickedSpace);
+                checkerWasMoved = true;
 
             } else if (clickedSpace.y === activeCheckerSpace.y - 2 &&
                     (
@@ -173,11 +172,14 @@ class Game {
                     )
                 ) {//jump opponent's checker
 
-                activeChecker.jumpChecker(clickedSpace, opponentChecker, function() {
-                    game.updateGameState();
-                });
+                activeChecker.jumpChecker(clickedSpace, opponentChecker);
+                checkerWasMoved = true;
+                checkerWasJumped = true;
 
             }
+        }
+        if (checkerWasMoved) {
+            this.updateGameState(checkerWasJumped);
         }
     }
 
@@ -198,13 +200,24 @@ class Game {
 
     /**
      * Updates game state after checker is moved
+     * @param   {boolean}    checkerWasJumped - represents whether last move was a jump
      */
-    updateGameState() {
+    updateGameState(checkerWasJumped) {
         if (this.opposingPlayer.remainingCheckers.length > 0) {//opposing player still has checkers left - no win - keep playing
 
             this.checkForKing();
-            this.activePlayer.activeChecker.active = false;
-            this.switchPlayers();
+            
+            if (!checkerWasJumped || //last move was not jump
+                !this.checkForAddlJump()) {//active player cannot make another jump with active checker
+
+                this.activePlayer.activeChecker.active = false;
+                this.switchPlayers();
+
+            } else if (checkerWasJumped && //last move was jump
+                this.checkForAddlJump()) {//active player can jump again with active checker
+
+                document.getElementById(this.activePlayer.activeChecker.space.id).classList.toggle('active');
+                }
 
         } else {//win achieved
             console.log(`${this.activePlayer.name} wins`);
@@ -220,6 +233,51 @@ class Game {
             (this.activePlayer.id === 2 && activeCheckerSpace.y === 0)) {
             this.activePlayer.activeChecker.makeKing();
         }
+    }
+
+    /**
+     * Checks whether active player can perform another jump with active checker
+     * @returns  {boolean}  addlJump - boolean value representing whether active checker can jump again
+     */
+    checkForAddlJump() {
+        let addlJump = false;
+        const activeCheckerSpace = this.activePlayer.activeChecker.space;
+
+        if (this.activePlayer.id === 1 || this.activePlayer.activeChecker.isKing) {//player one or king checker - jump down the board
+            
+            if ((this.board.spaces[activeCheckerSpace.x + 2] &&
+                this.board.spaces[activeCheckerSpace.x + 2][activeCheckerSpace.y + 2] && //check that space exists on board
+                this.board.spaces[activeCheckerSpace.x + 2][activeCheckerSpace.y + 2].checker === null && //check that space is empty
+                this.checkForOpponentChecker(activeCheckerSpace.x + 1, activeCheckerSpace.y + 1))
+                ||
+                (this.board.spaces[activeCheckerSpace.x - 2] &&
+                this.board.spaces[activeCheckerSpace.x - 2][activeCheckerSpace.y + 2] && //check that space exists on board
+                this.board.spaces[activeCheckerSpace.x - 2][activeCheckerSpace.y + 2].checker === null && //check that space is empty
+                this.checkForOpponentChecker(activeCheckerSpace.x - 1, activeCheckerSpace.y + 1))) {
+
+                    addlJump = true;
+
+            }
+        }
+
+        if (this.activePlayer.id === 2 || this.activePlayer.activeChecker.isKing) {//player two or king checker - jump up the board
+
+            if ((this.board.spaces[activeCheckerSpace.x + 2] &&
+                this.board.spaces[activeCheckerSpace.x + 2][activeCheckerSpace.y - 2] && //check that space exists on board
+                this.board.spaces[activeCheckerSpace.x + 2][activeCheckerSpace.y - 2].checker === null && //check that space is empty
+                this.checkForOpponentChecker(activeCheckerSpace.x + 1, activeCheckerSpace.y - 1))
+                ||
+                (this.board.spaces[activeCheckerSpace.x - 2] &&
+                this.board.spaces[activeCheckerSpace.x - 2][activeCheckerSpace.y - 2] && //check that space exists on board
+                this.board.spaces[activeCheckerSpace.x - 2][activeCheckerSpace.y - 2].checker === null && //check that space is empty
+                this.checkForOpponentChecker(activeCheckerSpace.x - 1, activeCheckerSpace.y - 1))) {
+
+                    addlJump = true;
+
+            }
+        }
+
+        return addlJump;
     }
 
     /** 
