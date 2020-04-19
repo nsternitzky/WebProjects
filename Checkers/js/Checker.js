@@ -30,5 +30,38 @@ class Checker {
      */
 	mark(space) {
 		this.space = space;
-	}
+    }
+    
+    /**
+     * Jumps opponent's checker
+     * @param   {Object}    targetSpace - space checker will move to
+     * @param   {Object}    opponentChecker - opponent's checker that active player is jumping
+     */
+    jumpChecker(targetSpace, opponentChecker) {
+        opponentChecker.removeChecker();
+        this.moveChecker(targetSpace);
+    }
+
+    /**
+     * Removes checker from play
+     * @param   {Object}    checker - checker being jumped by active player
+     */
+    removeChecker() {
+        
+    }
+
+    /**
+     * Moves checker to space provided
+     * @param   {Object}    targetSpace - space checker will move to
+     * @param   {function}  reset - function to call after checker has been moved
+     */
+    moveChecker(targetSpace, reset) {
+        document.getElementById(this.space.id).classList.toggle('active');
+        document.getElementById(this.id).remove();
+        this.space.mark(null);
+        this.drawHTMLChecker(targetSpace, this.owner.color);
+        this.active = false;
+
+        reset();
+    }
 }

@@ -109,7 +109,9 @@ class Game {
         const col = clickedSpaceDiv.id.charAt(6);
         const row = clickedSpaceDiv.id.charAt(8);
         const clickedSpace = this.board.spaces[col][row];
-        const activeCheckerSpace = this.activePlayer.activeChecker.space;
+        const activeChecker = this.activePlayer.activeChecker;
+        const activeCheckerSpace = activeChecker.space;
+        const game = this;
         let opponentChecker = null;
 
         if (this.activePlayer.id === this.players[0].id) {//player one
@@ -118,7 +120,9 @@ class Game {
                 (clickedSpace.x === activeCheckerSpace.x - 1 ||
                 clickedSpace.x === activeCheckerSpace.x + 1)) {//basic move forward
 
-                this.moveChecker(clickedSpace);
+                activeChecker.moveChecker(clickedSpace, function() {
+                    game.updateGameState();
+                });
 
             } else if (clickedSpace.y === activeCheckerSpace.y + 2 &&
                     (
@@ -132,7 +136,7 @@ class Game {
                     )
                 ) {//jump opponent's checker
 
-                this.jumpChecker(clickedSpace, opponentChecker);
+                activeChecker.jumpChecker(clickedSpace, opponentChecker);
 
             }
 
@@ -141,7 +145,9 @@ class Game {
                 (clickedSpace.x === activeCheckerSpace.x - 1 ||
                 clickedSpace.x === activeCheckerSpace.x + 1)) {//basic move forward
                     
-                this.moveChecker(clickedSpace);
+                activeChecker.moveChecker(clickedSpace, function() {
+                    game.updateGameState();
+                });
 
             } else if (clickedSpace.y === activeCheckerSpace.y - 2 &&
                     (
@@ -155,7 +161,7 @@ class Game {
                     )
                 ) {//jump opponent's checker
 
-                this.jumpChecker(clickedSpace, opponentChecker);
+                activeChecker.jumpChecker(clickedSpace, opponentChecker);
 
             }
         }
@@ -174,30 +180,6 @@ class Game {
             checker = space.checker;
         }
         return checker;
-    }
-
-    /**
-     * Jumps opponent's checker
-     * @param   {Object}    targetSpace - space checker will move to
-     */
-    jumpChecker(targetSpace) {
-
-
-        this.moveChecker(targetSpace);
-    }
-
-    /**
-     * Moves checker to space provided
-     * @param   {Object}    targetSpace - space checker will move to
-     */
-    moveChecker(targetSpace) {
-        document.getElementById(this.activePlayer.activeChecker.space.id).classList.toggle('active');
-        document.getElementById(this.activePlayer.activeChecker.id).remove();
-        this.activePlayer.activeChecker.space.mark(null);
-        this.activePlayer.activeChecker.drawHTMLChecker(targetSpace, this.activePlayer.color);
-        this.activePlayer.activeChecker.active = false;
-
-        this.updateGameState();
     }
 
     /**
