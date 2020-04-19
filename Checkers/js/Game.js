@@ -122,7 +122,7 @@ class Game {
         const game = this;
         let opponentChecker = null;
 
-        if (this.activePlayer.id === this.players[0].id) {//player one
+        if (this.activePlayer.id === 1 || this.activePlayer.activeChecker.isKing) {//player one or king checker - move down the board
 
             if (clickedSpace.y === activeCheckerSpace.y + 1 &&
                 (clickedSpace.x === activeCheckerSpace.x - 1 ||
@@ -150,7 +150,9 @@ class Game {
 
             }
 
-        } else {//player two
+        } 
+        if (this.activePlayer.id === 2 || this.activePlayer.activeChecker.isKing) {//player two or king checker - move up the board
+
             if (clickedSpace.y === activeCheckerSpace.y - 1 &&
                 (clickedSpace.x === activeCheckerSpace.x - 1 ||
                 clickedSpace.x === activeCheckerSpace.x + 1)) {//basic move forward

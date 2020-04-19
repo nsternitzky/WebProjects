@@ -19,6 +19,10 @@ class Checker {
         HTMLChecker.classList.add('checker');
         HTMLChecker.style.backgroundColor = color;
 
+        if (this.isKing) {
+            HTMLChecker.classList.add('king');
+        }
+
         document.querySelector(`#${space.id}`).appendChild(HTMLChecker);
         this.mark(space);
         space.mark(this);
