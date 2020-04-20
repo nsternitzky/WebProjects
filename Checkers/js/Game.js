@@ -221,14 +221,14 @@ class Game {
             this.checkForKing();
             
             if (!checkerWasJumped || //last move was not jump
-                !this.checkForJump()) {//active player cannot make another jump with active checker
+                !this.checkForJump(this.activePlayer.activeChecker)) {//active player cannot make another jump with active checker
 
                 this.activePlayer.activeChecker.alreadyJumpedThisTurn = false;
                 this.activePlayer.activeChecker.active = false;
                 this.switchPlayers();
 
             } else if (checkerWasJumped && //last move was jump
-                this.checkForJump()) {//active player can jump again with active checker
+                this.checkForJump(this.activePlayer.activeChecker)) {//active player can jump again with active checker
 
                 document.getElementById(this.activePlayer.activeChecker.space.id).classList.toggle('active');
                 }
@@ -251,41 +251,42 @@ class Game {
     }
 
     /**
-     * Checks whether active player can perform another jump with active checker
-     * @returns  {boolean}  canJump - boolean value representing whether active checker can jump again
+     * Checks whether player can perform a jump with a certain checker
+     * @param   {Object}    checker - checker being checked to see if it can perform jump
+     * @returns {boolean}   canJump - boolean value representing whether checker can perform jump
      */
-    checkForJump() {
+    checkForJump(checker) {
         let canJump = false;
-        const activeCheckerSpace = this.activePlayer.activeChecker.space;
+        const checkerSpace = checker.space;
 
-        if (this.activePlayer.id === 1 || this.activePlayer.activeChecker.isKing) {//player one or king checker - jump down the board
+        if (checker.owner.id === 1 || checker.isKing) {//player one or king checker - jump down the board
             
-            if ((this.board.spaces[activeCheckerSpace.x + 2] &&
-                this.board.spaces[activeCheckerSpace.x + 2][activeCheckerSpace.y + 2] && //check that space exists on board
-                this.board.spaces[activeCheckerSpace.x + 2][activeCheckerSpace.y + 2].checker === null && //check that space is empty
-                this.checkForOpponentChecker(activeCheckerSpace.x + 1, activeCheckerSpace.y + 1))
+            if ((this.board.spaces[checkerSpace.x + 2] &&
+                this.board.spaces[checkerSpace.x + 2][checkerSpace.y + 2] && //check that space exists on board
+                this.board.spaces[checkerSpace.x + 2][checkerSpace.y + 2].checker === null && //check that space is empty
+                this.checkForOpponentChecker(checkerSpace.x + 1, checkerSpace.y + 1))
                 ||
-                (this.board.spaces[activeCheckerSpace.x - 2] &&
-                this.board.spaces[activeCheckerSpace.x - 2][activeCheckerSpace.y + 2] && //check that space exists on board
-                this.board.spaces[activeCheckerSpace.x - 2][activeCheckerSpace.y + 2].checker === null && //check that space is empty
-                this.checkForOpponentChecker(activeCheckerSpace.x - 1, activeCheckerSpace.y + 1))) {
+                (this.board.spaces[checkerSpace.x - 2] &&
+                this.board.spaces[checkerSpace.x - 2][checkerSpace.y + 2] && //check that space exists on board
+                this.board.spaces[checkerSpace.x - 2][checkerSpace.y + 2].checker === null && //check that space is empty
+                this.checkForOpponentChecker(checkerSpace.x - 1, checkerSpace.y + 1))) {
 
                     canJump = true;
 
             }
         }
 
-        if (this.activePlayer.id === 2 || this.activePlayer.activeChecker.isKing) {//player two or king checker - jump up the board
+        if (checker.owner.id === 2 || checker.isKing) {//player two or king checker - jump up the board
 
-            if ((this.board.spaces[activeCheckerSpace.x + 2] &&
-                this.board.spaces[activeCheckerSpace.x + 2][activeCheckerSpace.y - 2] && //check that space exists on board
-                this.board.spaces[activeCheckerSpace.x + 2][activeCheckerSpace.y - 2].checker === null && //check that space is empty
-                this.checkForOpponentChecker(activeCheckerSpace.x + 1, activeCheckerSpace.y - 1))
+            if ((this.board.spaces[checkerSpace.x + 2] &&
+                this.board.spaces[checkerSpace.x + 2][checkerSpace.y - 2] && //check that space exists on board
+                this.board.spaces[checkerSpace.x + 2][checkerSpace.y - 2].checker === null && //check that space is empty
+                this.checkForOpponentChecker(checkerSpace.x + 1, checkerSpace.y - 1))
                 ||
-                (this.board.spaces[activeCheckerSpace.x - 2] &&
-                this.board.spaces[activeCheckerSpace.x - 2][activeCheckerSpace.y - 2] && //check that space exists on board
-                this.board.spaces[activeCheckerSpace.x - 2][activeCheckerSpace.y - 2].checker === null && //check that space is empty
-                this.checkForOpponentChecker(activeCheckerSpace.x - 1, activeCheckerSpace.y - 1))) {
+                (this.board.spaces[checkerSpace.x - 2] &&
+                this.board.spaces[checkerSpace.x - 2][checkerSpace.y - 2] && //check that space exists on board
+                this.board.spaces[checkerSpace.x - 2][checkerSpace.y - 2].checker === null && //check that space is empty
+                this.checkForOpponentChecker(checkerSpace.x - 1, checkerSpace.y - 1))) {
 
                     canJump = true;
 
