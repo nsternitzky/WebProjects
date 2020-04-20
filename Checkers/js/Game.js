@@ -252,7 +252,7 @@ class Game {
 
     /**
      * Checks whether active player can perform another jump with active checker
-     * @returns  {boolean}  addlJump - boolean value representing whether active checker can jump again
+     * @returns  {boolean}  canJump - boolean value representing whether active checker can jump again
      */
     checkForJump() {
         let canJump = false;
