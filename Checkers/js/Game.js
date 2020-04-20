@@ -36,6 +36,9 @@ class Game {
     startGame(){
         this.board.drawHTMLBoard();
 
+        document.getElementById('turn-indicator').style.display = 'block';
+        this.updateTurnIndicator();
+
         //draw player one's checkers
         const playerOneSpaces = [];
         for (let y=0; y < 3; y++) {
@@ -59,6 +62,15 @@ class Game {
             }
         }
         this.players[1].drawHTMLCheckers(playerTwoSpaces);
+    }
+
+    /**
+     * Updates turn indicator to current active player 
+     */
+    updateTurnIndicator() {
+        const turnIndicator = document.getElementById('turn-indicator');
+        turnIndicator.textContent = `${this.activePlayer.name}'s turn`;
+        turnIndicator.style.color = this.activePlayer.color;
     }
 
     /**
@@ -288,6 +300,7 @@ class Game {
 	switchPlayers() {
 		for (let player of this.players) {
 			player.active = player.active === true ? false : true;
-		}
+        }
+        this.updateTurnIndicator();
     }
 }
