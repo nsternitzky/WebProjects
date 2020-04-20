@@ -148,11 +148,11 @@ class Game {
             } else if (clickedSpace.y === activeCheckerSpace.y + 2 &&
                     (
                         (clickedSpace.x === activeCheckerSpace.x - 2 &&
-                            (opponentChecker = this.checkForOpponentChecker(activeCheckerSpace.x - 1, activeCheckerSpace.y + 1))
+                            (opponentChecker = this.checkForOpponentChecker(activeCheckerSpace.x - 1, activeCheckerSpace.y + 1, this.activePlayer))
                         )
                         ||
                         (clickedSpace.x === activeCheckerSpace.x + 2 && 
-                            (opponentChecker = this.checkForOpponentChecker(activeCheckerSpace.x + 1, activeCheckerSpace.y + 1))
+                            (opponentChecker = this.checkForOpponentChecker(activeCheckerSpace.x + 1, activeCheckerSpace.y + 1, this.activePlayer))
                         )
                     )
                 ) {//jump opponent's checker
@@ -176,11 +176,11 @@ class Game {
             } else if (clickedSpace.y === activeCheckerSpace.y - 2 &&
                     (
                         (clickedSpace.x === activeCheckerSpace.x - 2 && 
-                            (opponentChecker = this.checkForOpponentChecker(activeCheckerSpace.x - 1, activeCheckerSpace.y - 1))
+                            (opponentChecker = this.checkForOpponentChecker(activeCheckerSpace.x - 1, activeCheckerSpace.y - 1, this.activePlayer))
                         )
                         ||
                         (clickedSpace.x === activeCheckerSpace.x + 2 && 
-                            (opponentChecker = this.checkForOpponentChecker(activeCheckerSpace.x + 1, activeCheckerSpace.y - 1))
+                            (opponentChecker = this.checkForOpponentChecker(activeCheckerSpace.x + 1, activeCheckerSpace.y - 1, this.activePlayer))
                         )
                     )
                 ) {//jump opponent's checker
@@ -200,12 +200,13 @@ class Game {
      * Checks space located at (x,y) for opponent's checker
      * @param   {integer}       x - x coordinate of space to be checked
      * @param   {integer}       y - y coordinate of space to be checked
+     * @param   {Object}        player - player who's checking this space for their opponent's checker
      * @returns {Object | null} checker - opponent's checker in indicated space (if there is one)
      */
-    checkForOpponentChecker(x,y) {
+    checkForOpponentChecker(x, y, player) {
         let checker = null;
         const space = this.board.spaces[x][y];
-        if (space.checker && space.checker.owner !== this.activePlayer) {
+        if (space.checker && space.checker.owner !== player) {
             checker = space.checker;
         }
         return checker;
@@ -264,12 +265,12 @@ class Game {
             if ((this.board.spaces[checkerSpace.x + 2] &&
                 this.board.spaces[checkerSpace.x + 2][checkerSpace.y + 2] && //check that space exists on board
                 this.board.spaces[checkerSpace.x + 2][checkerSpace.y + 2].checker === null && //check that space is empty
-                this.checkForOpponentChecker(checkerSpace.x + 1, checkerSpace.y + 1))
+                this.checkForOpponentChecker(checkerSpace.x + 1, checkerSpace.y + 1, checker.owner))
                 ||
                 (this.board.spaces[checkerSpace.x - 2] &&
                 this.board.spaces[checkerSpace.x - 2][checkerSpace.y + 2] && //check that space exists on board
                 this.board.spaces[checkerSpace.x - 2][checkerSpace.y + 2].checker === null && //check that space is empty
-                this.checkForOpponentChecker(checkerSpace.x - 1, checkerSpace.y + 1))) {
+                this.checkForOpponentChecker(checkerSpace.x - 1, checkerSpace.y + 1, checker.owner))) {
 
                     canJump = true;
 
@@ -281,12 +282,12 @@ class Game {
             if ((this.board.spaces[checkerSpace.x + 2] &&
                 this.board.spaces[checkerSpace.x + 2][checkerSpace.y - 2] && //check that space exists on board
                 this.board.spaces[checkerSpace.x + 2][checkerSpace.y - 2].checker === null && //check that space is empty
-                this.checkForOpponentChecker(checkerSpace.x + 1, checkerSpace.y - 1))
+                this.checkForOpponentChecker(checkerSpace.x + 1, checkerSpace.y - 1, checker.owner))
                 ||
                 (this.board.spaces[checkerSpace.x - 2] &&
                 this.board.spaces[checkerSpace.x - 2][checkerSpace.y - 2] && //check that space exists on board
                 this.board.spaces[checkerSpace.x - 2][checkerSpace.y - 2].checker === null && //check that space is empty
-                this.checkForOpponentChecker(checkerSpace.x - 1, checkerSpace.y - 1))) {
+                this.checkForOpponentChecker(checkerSpace.x - 1, checkerSpace.y - 1, checker.owner))) {
 
                     canJump = true;
 
