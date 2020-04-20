@@ -40,11 +40,10 @@ class Checker {
      * Jumps opponent's checker
      * @param   {Object}    targetSpace - space checker will move to
      * @param   {Object}    opponentChecker - opponent's checker that active player is jumping
-     * @param   {Object}    reset - function to call after checker has been jumped
      */
-    jumpChecker(targetSpace, opponentChecker, reset) {
+    jumpChecker(targetSpace, opponentChecker) {
         opponentChecker.removeChecker();
-        this.moveChecker(targetSpace, reset);
+        this.moveChecker(targetSpace);
     }
 
     /**
