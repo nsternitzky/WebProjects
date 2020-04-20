@@ -119,7 +119,6 @@ class Game {
         const clickedSpace = this.board.spaces[col][row];
         const activeChecker = this.activePlayer.activeChecker;
         const activeCheckerSpace = activeChecker.space;
-        const game = this;
         let opponentChecker = null;
         let checkerWasMoved = false;
         let checkerWasJumped = false;
