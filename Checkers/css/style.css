@@ -1,8 +1,13 @@
+body {
+    text-align: center;
+}
+
 #turn-indicator {
     display: none;
 }
 
 #game-board {
+    margin: 20px auto;
     width: 400px;
     height: 400px;
     background-color: #ffbc00;
