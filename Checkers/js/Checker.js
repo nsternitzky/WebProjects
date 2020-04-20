@@ -5,6 +5,7 @@ class Checker {
         this.isInPlay = true;
         this.isKing = false;
         this.active = false;
+        this.alreadyJumpedThisTurn = false;
         this.space = null;
     }
 
@@ -44,6 +45,7 @@ class Checker {
     jumpChecker(targetSpace, opponentChecker) {
         opponentChecker.removeChecker();
         this.moveChecker(targetSpace);
+        this.alreadyJumpedThisTurn = true;
     }
 
     /**

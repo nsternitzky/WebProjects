@@ -81,7 +81,7 @@ class Game {
                 }
             }
 
-        } else if (clickedDiv.id === activeChecker.id) {//player clicked active checker - make it inactive
+        } else if (clickedDiv.id === activeChecker.id && !activeChecker.alreadyJumpedThisTurn) {//player clicked active checker - make it inactive (unless in middle of multi-jump)
             
             activeChecker.active = false;
             clickedDiv.parentElement.classList.toggle('active');
@@ -125,7 +125,8 @@ class Game {
 
         if (this.activePlayer.id === 1 || this.activePlayer.activeChecker.isKing) {//player one or king checker - move down the board
 
-            if (clickedSpace.y === activeCheckerSpace.y + 1 &&
+            if (!activeChecker.alreadyJumpedThisTurn &&
+                clickedSpace.y === activeCheckerSpace.y + 1 &&
                 (clickedSpace.x === activeCheckerSpace.x - 1 ||
                 clickedSpace.x === activeCheckerSpace.x + 1)) {//basic move forward
 
@@ -152,7 +153,8 @@ class Game {
         } 
         if (this.activePlayer.id === 2 || this.activePlayer.activeChecker.isKing) {//player two or king checker - move up the board
 
-            if (clickedSpace.y === activeCheckerSpace.y - 1 &&
+            if (!activeChecker.alreadyJumpedThisTurn &&
+                clickedSpace.y === activeCheckerSpace.y - 1 &&
                 (clickedSpace.x === activeCheckerSpace.x - 1 ||
                 clickedSpace.x === activeCheckerSpace.x + 1)) {//basic move forward
                     
@@ -209,6 +211,7 @@ class Game {
             if (!checkerWasJumped || //last move was not jump
                 !this.checkForAddlJump()) {//active player cannot make another jump with active checker
 
+                this.activePlayer.activeChecker.alreadyJumpedThisTurn = false;
                 this.activePlayer.activeChecker.active = false;
                 this.switchPlayers();
 
