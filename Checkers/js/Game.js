@@ -221,14 +221,14 @@ class Game {
             this.checkForKing();
             
             if (!checkerWasJumped || //last move was not jump
-                !this.checkForAddlJump()) {//active player cannot make another jump with active checker
+                !this.checkForJump()) {//active player cannot make another jump with active checker
 
                 this.activePlayer.activeChecker.alreadyJumpedThisTurn = false;
                 this.activePlayer.activeChecker.active = false;
                 this.switchPlayers();
 
             } else if (checkerWasJumped && //last move was jump
-                this.checkForAddlJump()) {//active player can jump again with active checker
+                this.checkForJump()) {//active player can jump again with active checker
 
                 document.getElementById(this.activePlayer.activeChecker.space.id).classList.toggle('active');
                 }
@@ -254,8 +254,8 @@ class Game {
      * Checks whether active player can perform another jump with active checker
      * @returns  {boolean}  addlJump - boolean value representing whether active checker can jump again
      */
-    checkForAddlJump() {
-        let addlJump = false;
+    checkForJump() {
+        let canJump = false;
         const activeCheckerSpace = this.activePlayer.activeChecker.space;
 
         if (this.activePlayer.id === 1 || this.activePlayer.activeChecker.isKing) {//player one or king checker - jump down the board
@@ -270,7 +270,7 @@ class Game {
                 this.board.spaces[activeCheckerSpace.x - 2][activeCheckerSpace.y + 2].checker === null && //check that space is empty
                 this.checkForOpponentChecker(activeCheckerSpace.x - 1, activeCheckerSpace.y + 1))) {
 
-                    addlJump = true;
+                    canJump = true;
 
             }
         }
@@ -287,12 +287,12 @@ class Game {
                 this.board.spaces[activeCheckerSpace.x - 2][activeCheckerSpace.y - 2].checker === null && //check that space is empty
                 this.checkForOpponentChecker(activeCheckerSpace.x - 1, activeCheckerSpace.y - 1))) {
 
-                    addlJump = true;
+                    canJump = true;
 
             }
         }
 
-        return addlJump;
+        return canJump;
     }
 
     /** 
