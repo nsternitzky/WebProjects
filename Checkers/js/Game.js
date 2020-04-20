@@ -234,7 +234,8 @@ class Game {
                 }
 
         } else {//win achieved
-            console.log(`${this.activePlayer.name} wins`);
+            document.getElementById('game-over').textContent = `${this.activePlayer.name} wins!`;
+            document.getElementById('game-over').style.color = this.activePlayer.color;
         }
     }
 
