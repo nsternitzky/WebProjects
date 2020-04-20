@@ -219,7 +219,7 @@ class Game {
     updateGameState(checkerWasJumped) {
         if (this.opposingPlayer.remainingCheckers.length > 0) {//opposing player still has checkers left - no win - keep playing
 
-            this.checkForKing();
+            this.checkForKing(this.activePlayer.activeChecker);
             
             if (!checkerWasJumped || //last move was not jump
                 !this.checkForJump(this.activePlayer.activeChecker)) {//active player cannot make another jump with active checker
@@ -242,12 +242,13 @@ class Game {
 
     /**
      * Checks whether active checker becomes king after being moved
+     * @param   {Object}    checker - checker to be checked for becoming king
      */
-    checkForKing() {
-        const activeCheckerSpace = this.activePlayer.activeChecker.space;
-        if ((this.activePlayer.id === 1 && activeCheckerSpace.y === this.board.rows - 1) ||
-            (this.activePlayer.id === 2 && activeCheckerSpace.y === 0)) {
-            this.activePlayer.activeChecker.makeKing();
+    checkForKing(checker) {
+        const checkerSpace = checker.space;
+        if ((checker.owner.id === 1 && checkerSpace.y === this.board.rows - 1) ||
+            (checker.owner.id === 2 && checkerSpace.y === 0)) {
+            checker.makeKing();
         }
     }
 
