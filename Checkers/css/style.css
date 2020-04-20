@@ -23,10 +23,11 @@
 }
 
 .active {
-    border: 3px solid green;
+    opacity: .5;
 }
 
 .checker {
+    box-sizing: border-box;
     width: 85%;
     height: 85%;
     border-radius: 100%;
