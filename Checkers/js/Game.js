@@ -217,7 +217,7 @@ class Game {
      * @param   {boolean}    checkerWasJumped - represents whether last move was a jump
      */
     updateGameState(checkerWasJumped) {
-        if (this.opposingPlayer.remainingCheckers.length > 0) {//opposing player still has checkers left - no win - keep playing
+        if (!this.checkForWin()) {//no win - keep playing
 
             this.checkForKing(this.activePlayer.activeChecker);
             
@@ -241,6 +241,25 @@ class Game {
     }
 
     /**
+     * Checks whether a win condition has been met
+     * @returns {boolean}   win - expresses whether any win condition has been met
+     */
+    checkForWin() {
+        let win = false;
+
+        if (this.opposingPlayer.remainingCheckers.length === 0) {//opponent has no checkers left
+            win = true;
+        }
+
+        if (!(this.opposingPlayer.remainingCheckers.find(checker => this.checkForMove(checker)) !== undefined ||
+            this.opposingPlayer.remainingCheckers.find(checker => this.checkForJump(checker)) !== undefined)) {//opponent has no moves left
+                win = true;
+            }
+
+        return win;
+    }
+
+    /**
      * Checks whether active checker becomes king after being moved
      * @param   {Object}    checker - checker to be checked for becoming king
      */
@@ -250,6 +269,50 @@ class Game {
             (checker.owner.id === 2 && checkerSpace.y === 0)) {
             checker.makeKing();
         }
+    }
+
+    /**
+     * Checks whether player can do basic move with a certain checker
+     * @param   {Object}    checker - checker being checked to see if it can move
+     * @returns {boolean}   canMove - represents whether checker can move
+     */
+    checkForMove(checker) {
+        let canMove = false;
+        const checkerSpace = checker.space;
+
+        if (checker.owner.id === 1 || checker.isKing) {//player one or king checker - jump down the board
+            
+            if (    (this.board.spaces[checkerSpace.x + 1] &&
+                    this.board.spaces[checkerSpace.x + 1][checkerSpace.y + 1] && //check that space exists on board
+                    this.board.spaces[checkerSpace.x + 1][checkerSpace.y + 1].checker === null) //check that space is empty)
+                ||
+                    (this.board.spaces[checkerSpace.x - 1] &&
+                    this.board.spaces[checkerSpace.x - 1][checkerSpace.y + 1] && //check that space exists on board
+                    this.board.spaces[checkerSpace.x - 1][checkerSpace.y + 1].checker === null) //check that space is empty
+                ) {
+
+                    canMove = true;
+
+            }
+        }
+
+        if (checker.owner.id === 2 || checker.isKing) {//player two or king checker - jump up the board
+
+            if (    (this.board.spaces[checkerSpace.x + 1] &&
+                    this.board.spaces[checkerSpace.x + 1][checkerSpace.y - 1] && //check that space exists on board
+                    this.board.spaces[checkerSpace.x + 1][checkerSpace.y - 1].checker === null) //check that space is empty
+                ||
+                    (this.board.spaces[checkerSpace.x - 1] &&
+                    this.board.spaces[checkerSpace.x - 1][checkerSpace.y - 1] && //check that space exists on board
+                    this.board.spaces[checkerSpace.x - 1][checkerSpace.y - 1].checker === null) //check that space is empty
+                ) {
+
+                    canMove = true;
+
+            }
+        }
+
+        return canMove;
     }
 
     /**
