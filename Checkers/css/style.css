@@ -4,6 +4,13 @@ body {
 
 #turn-indicator {
     display: none;
+    align-items: center;
+}
+
+#turn-indicator .checker {
+    width: 40px;
+    height: 40px;
+    margin: 0 15px 0 0;
 }
 
 #game-board {

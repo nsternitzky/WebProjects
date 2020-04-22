@@ -36,7 +36,7 @@ class Game {
     startGame(){
         this.board.drawHTMLBoard();
 
-        document.getElementById('turn-indicator').style.display = 'block';
+        document.getElementById('turn-indicator').style.display = 'inline-flex';
         this.updateTurnIndicator();
 
         //draw player one's checkers
@@ -69,8 +69,13 @@ class Game {
      */
     updateTurnIndicator() {
         const turnIndicator = document.getElementById('turn-indicator');
-        turnIndicator.textContent = `${this.activePlayer.name}'s turn`;
-        turnIndicator.style.color = this.activePlayer.color;
+        const checkerDiv = turnIndicator.querySelector('.checker');
+        const textIndicator = turnIndicator.querySelector('#text-indicator');
+
+        checkerDiv.style.backgroundColor = this.activePlayer.color;
+
+        textIndicator.textContent = `${this.activePlayer.name}'s turn`;
+        textIndicator.style.color = this.activePlayer.color;
     }
 
     /**
