@@ -21,11 +21,6 @@ function checkStatus(response) {
     }
 }
 
-// function generateOptions(data) {
-//     const options = data.map(item => `<option value='${item.name}'>${item.name}</option>`).join('');
-//     select.innerHTML += options;
-// }
-
 // ------------------------------------------
 //  VUE
 // ------------------------------------------
