@@ -33,21 +33,27 @@ new Vue({
     },
     methods: {
         getLocations: function() {
-            fetchData(`http://pokeapi.co/api/v2/pokemon/${this.species.name}/encounters`)
+            fetchData(`http://pokeapi.co/api/v2/pokemon/${this.species.name.toLowerCase()}/encounters`)
                 .then(data => this.locationList = data)
         },
         getImg: function() {
-            fetchData(`http://pokeapi.co/api/v2/pokemon/${this.species.name}/`)
+            fetchData(`http://pokeapi.co/api/v2/pokemon/${this.species.name.toLowerCase()}/`)
                 .then(data => this.species.img = data.sprites.front_default)
         },
         handleSelect: function() {
-            this.getLocations();
             this.getImg();
+            this.getLocations();
         }
     },
     mounted() {
         fetchData('http://pokeapi.co/api/v2/pokemon/')
             .then(data => fetchData(`http://pokeapi.co/api/v2/pokemon/?limit=${data.count}`))
-            .then(data => this.speciesList = data.results.sort((a,b) => a.name > b.name ? 1 : -1))
+            .then(data => {
+                this.speciesList = data.results.sort((a,b) => a.name > b.name ? 1 : -1)
+
+                for (let item of this.speciesList) {
+                    item.name = item.name.charAt(0).toUpperCase() + item.name.slice(1);
+                }
+            })
     }
   });
