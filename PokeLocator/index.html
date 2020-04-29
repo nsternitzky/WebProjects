@@ -16,10 +16,12 @@
             <option v-for='species in speciesList'>{{species.name}}</option>
         </select>
 
-        <h3>{{species}} can be found at the following locations:</h3>
-        <ul>
-            <li v-for='location in locationList'>{{location.location_area.name}}</li>
-        </ul>
+        <div v-show='species'>
+            <h3>{{species}} can be found at the following locations:</h3>
+            <ul>
+                <li v-for='location in locationList'>{{location.location_area.name}}</li>
+            </ul>
+        </div>
 
     </div>
 
