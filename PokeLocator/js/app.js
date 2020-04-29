@@ -28,14 +28,19 @@ function checkStatus(response) {
 new Vue({
     el: '#locator-app',
     data: {
-        speciesList: []
+        speciesList: [],
+        species: '',
+        locationList: []
     },
     methods: {
-      
+        getLocations: function() {
+            fetchData(`http://pokeapi.co/api/v2/pokemon/${this.species}/encounters`)
+                .then(data => this.locationList = data)
+        }
     },
     mounted() {
-        fetchData('http://pokeapi.co/api/v2/pokemon/')
-            .then(data => fetchData(`http://pokeapi.co/api/v2/pokemon/?limit=${data.count}`))
+        fetchData('http://pokeapi.co/api/v2/pokemon-species/')
+            .then(data => fetchData(`http://pokeapi.co/api/v2/pokemon-species/?limit=${data.count}`))
             .then(data => this.speciesList = data.results.sort((a,b) => a.name > b.name ? 1 : -1))
     }
   });
