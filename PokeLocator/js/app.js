@@ -9,10 +9,6 @@ function fetchData(url) {
              .catch(error => console.log('Error:', error))
 }
 
-// ------------------------------------------
-//  HELPER FUNCTIONS
-// ------------------------------------------
-
 function checkStatus(response) {
     if (response.ok) {
         return Promise.resolve(response);
@@ -29,13 +25,24 @@ new Vue({
     el: '#locator-app',
     data: {
         speciesList: [],
-        species: '',
+        species: {
+            name: '',
+            img: ''
+        },
         locationList: []
     },
     methods: {
         getLocations: function() {
-            fetchData(`http://pokeapi.co/api/v2/pokemon/${this.species}/encounters`)
+            fetchData(`http://pokeapi.co/api/v2/pokemon/${this.species.name}/encounters`)
                 .then(data => this.locationList = data)
+        },
+        getImg: function() {
+            fetchData(`http://pokeapi.co/api/v2/pokemon/${this.species.name}/`)
+                .then(data => this.species.img = data.sprites.front_default)
+        },
+        handleSelect: function() {
+            this.getLocations();
+            this.getImg();
         }
     },
     mounted() {

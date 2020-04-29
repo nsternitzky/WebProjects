@@ -12,12 +12,13 @@
     <div id='locator-app'>
 
         <label for="species">Select a Pok&eacute;mon species</label>
-        <select id="species" v-model='species' v-on:change='getLocations'>
+        <select id="species" v-model='species.name' v-on:change='handleSelect'>
             <option v-for='species in speciesList'>{{species.name}}</option>
         </select>
 
-        <div v-show='species'>
-            <h3>{{species}} can be found at the following locations:</h3>
+        <div v-show='species.name'>
+            <img v-bind:src='species.img' v-bind:alt='species.name'>
+            <h3>{{species.name}} can be found at the following locations:</h3>
             <ul>
                 <li v-for='location in locationList'>{{location.location_area.name}}</li>
             </ul>
