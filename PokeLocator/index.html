@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
-    <title>PokeLocator</title>
+    <title>Pok&eacute;Locator</title>
 </head>
 <body>
-    <h1>PokeLocator</h1>
+    <h1>Pok&eacute;Locator</h1>
 
     <div id='locator-app'>
 
-        <label for="species">Select a Pokemon species</label>
+        <label for="species">Select a Pok&eacute;mon species</label>
         <select id="species" v-model='species' v-on:change='getLocations'>
             <option v-for='species in speciesList'>{{species.name}}</option>
         </select>
