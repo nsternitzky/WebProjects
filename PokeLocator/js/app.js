@@ -29,7 +29,7 @@ new Vue({
             name: '',
             img: ''
         },
-        locationList: []
+        locationList: {}
     },
     methods: {
         handleSelect: function() {
@@ -38,7 +38,17 @@ new Vue({
                 fetchData(`http://pokeapi.co/api/v2/pokemon/${this.species.name}/`)
             ])
             .then(data => {
-                this.locationList = data[0];
+
+                this.locationList = data[0].reduce(function(obj,location) {
+                    for (let versionDetails of location.version_details) {
+                        if (!obj.hasOwnProperty(versionDetails.version.name)) {
+                            obj[versionDetails.version.name] = [];
+                        }
+                        obj[versionDetails.version.name].push(location.location_area.name);
+                    }
+                    return obj;
+                }, {});
+
                 this.species.img = data[1].sprites.front_default;
             })
         },
