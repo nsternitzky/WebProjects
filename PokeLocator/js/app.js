@@ -32,17 +32,15 @@ new Vue({
         locationList: []
     },
     methods: {
-        getLocations: function() {
-            fetchData(`http://pokeapi.co/api/v2/pokemon/${this.species.name}/encounters`)
-                .then(data => this.locationList = data)
-        },
-        getImg: function() {
-            fetchData(`http://pokeapi.co/api/v2/pokemon/${this.species.name}/`)
-                .then(data => this.species.img = data.sprites.front_default)
-        },
         handleSelect: function() {
-            this.getImg();
-            this.getLocations();
+            Promise.all([
+                fetchData(`http://pokeapi.co/api/v2/pokemon/${this.species.name}/encounters`),
+                fetchData(`http://pokeapi.co/api/v2/pokemon/${this.species.name}/`)
+            ])
+            .then(data => {
+                this.locationList = data[0];
+                this.species.img = data[1].sprites.front_default;
+            })
         },
         formatSpeciesName: function(name) {
             let formatted = name.charAt(0).toUpperCase() + name.slice(1);
