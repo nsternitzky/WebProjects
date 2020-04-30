@@ -47,8 +47,20 @@ new Vue({
         formatSpeciesName: function(name) {
             let formatted = name.charAt(0).toUpperCase() + name.slice(1);
 
-            if (formatted.includes('-')) {
-                formatted = formatted.replace(/-/g,' ');
+            const hyphenRegEx = /-(?!(o(h*$|-))|z$|jr|mime)/g;
+            const hyphenIndex = formatted.search(hyphenRegEx);
+
+            if (hyphenIndex > -1) {
+                formatted = formatted.replace(hyphenRegEx,' ');
+                formatted = `${formatted.slice(0, hyphenIndex)} (${formatted.slice(hyphenIndex + 1)})`;
+            }
+
+            if (name === 'mr-mime') {
+                formatted = 'Mr. Mime';
+            }
+
+            if (name === 'mime-jr') {
+                formatted = 'Mime Jr.';
             }
 
             return formatted;
