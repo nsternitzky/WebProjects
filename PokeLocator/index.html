@@ -17,7 +17,7 @@
         </select>
 
         <div v-show='species.name'>
-            <img v-bind:src='species.img' v-bind:alt='formatSpeciesName(species.name)'>
+            <img v-show='species.img' v-bind:src='species.img' v-bind:alt='formatSpeciesName(species.name)'>
             <h3>{{formatSpeciesName(species.name)}} can be found at the following locations:</h3>
             <ul>
                 <li v-for='location in locationList'>{{location.location_area.name}}</li>
