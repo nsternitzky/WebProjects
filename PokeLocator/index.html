@@ -11,7 +11,7 @@
 
     <div id='locator-app'>
 
-        <label for="species">Select a Pok&eacute;mon species</label>
+        <label for="species">Select a Pok&eacute;mon species:</label>
         <select id="species" v-model='species.name' v-on:change='handleSelect'>
             <option v-for='item in speciesList' v-bind:value='item.name'>{{formatSpeciesName(item.name)}}</option>
         </select>
@@ -20,7 +20,7 @@
             <img v-show='species.img' v-bind:src='species.img' v-bind:alt='formatSpeciesName(species.name)'>
             <h3>{{formatSpeciesName(species.name)}} can be found at the following locations:</h3>
             <ul>
-                <li v-for='item in locationList'>{{capitalize(item.version)}}
+                <li v-for='item in locationList'>{{formatVersion(item.version)}}
                     <ul>
                         <li v-for='location in item.locations'>{{formatLocation(location)}}</li>
                     </ul>

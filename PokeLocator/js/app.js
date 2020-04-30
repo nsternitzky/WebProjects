@@ -81,6 +81,33 @@ new Vue({
             formatted = formatted.replace(/-/g, ' ');
             return formatted;
         },
+        formatVersion: function(version) {
+            let formatted = this.capitalize(version);
+
+            const hyphenIndex = formatted.search('-');
+            if (hyphenIndex > -1) {
+                formatted = `${formatted.slice(0, hyphenIndex)} ${formatted.charAt(hyphenIndex + 1).toUpperCase()}${formatted.slice(hyphenIndex + 2)}`;
+                formatted = formatted.replace(/-/g, ' ');
+            }
+
+            if (version === 'firered') {
+                formatted = 'FireRed';
+            }
+
+            if (version === 'leafgreen') {
+                formatted = 'LeafGreen';
+            }
+
+            if (version === 'heartgold') {
+                formatted = 'HeartGold';
+            }
+
+            if (version === 'soulsilver') {
+                formatted = 'SoulSilver';
+            }
+
+            return formatted;
+        },
         capitalize: function(text) {
             return text.charAt(0).toUpperCase() + text.slice(1);
         }
