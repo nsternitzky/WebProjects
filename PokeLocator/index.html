@@ -20,9 +20,9 @@
             <img v-show='species.img' v-bind:src='species.img' v-bind:alt='formatSpeciesName(species.name)'>
             <h3>{{formatSpeciesName(species.name)}} can be found at the following locations:</h3>
             <ul>
-                <li v-for='(item, version) in locationList'>{{version}}
+                <li v-for='item in locationList'>{{item.version}}
                     <ul>
-                        <li v-for='location in locationList[version]'>{{location}}</li>
+                        <li v-for='location in item.locations'>{{location}}</li>
                     </ul>
                 </li>
             </ul>

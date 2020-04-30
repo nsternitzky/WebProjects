@@ -29,7 +29,7 @@ new Vue({
             name: '',
             img: ''
         },
-        locationList: {}
+        locationList: []
     },
     methods: {
         handleSelect: function() {
@@ -41,13 +41,16 @@ new Vue({
 
                 this.locationList = data[0].reduce(function(obj,location) {
                     for (let versionDetails of location.version_details) {
-                        if (!obj.hasOwnProperty(versionDetails.version.name)) {
-                            obj[versionDetails.version.name] = [];
+                        if (!obj.find(element => element.version === versionDetails.version.name)) {
+                            obj.push({
+                                version: versionDetails.version.name,
+                                locations: []
+                            });
                         }
-                        obj[versionDetails.version.name].push(location.location_area.name);
+                        obj.find(element => element.version === versionDetails.version.name).locations.push(location.location_area.name);
                     }
                     return obj;
-                }, {});
+                }, []);
 
                 this.species.img = data[1].sprites.front_default;
             })
