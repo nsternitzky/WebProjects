@@ -56,7 +56,7 @@ new Vue({
             })
         },
         formatSpeciesName: function(name) {
-            let formatted = name.charAt(0).toUpperCase() + name.slice(1);
+            let formatted = this.capitalize(name);
 
             const hyphenRegEx = /-(?!(o(h*$|-))|z$|jr|mime)/g;
             const hyphenIndex = formatted.search(hyphenRegEx);
@@ -75,6 +75,14 @@ new Vue({
             }
 
             return formatted;
+        },
+        formatLocation: function(location) {
+            let formatted = this.capitalize(location);
+            formatted = formatted.replace(/-/g, ' ');
+            return formatted;
+        },
+        capitalize: function(text) {
+            return text.charAt(0).toUpperCase() + text.slice(1);
         }
     },
     mounted() {
