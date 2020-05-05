@@ -25,6 +25,7 @@ new Vue({
     el: '#locator-app',
     data: {
         speciesList: [],
+        versionList: [],
         species: {
             name: '',
             img: ''
@@ -51,6 +52,9 @@ new Vue({
                     }
                     return obj;
                 }, []);
+
+                console.log(this.versionList);
+                this.locationList.sort((a,b) => this.versionList.findIndex(item => item.name === a.version) - this.versionList.findIndex(item => item.name === b.version));
 
                 this.species.img = data[1].sprites.front_default;
             })
@@ -116,5 +120,8 @@ new Vue({
         fetchData('http://pokeapi.co/api/v2/pokemon/')
             .then(data => fetchData(`http://pokeapi.co/api/v2/pokemon/?limit=${data.count}`))
             .then(data => this.speciesList = data.results.sort((a,b) => a.name > b.name ? 1 : -1))
+        fetchData('http://pokeapi.co/api/v2/version/')
+            .then(data => fetchData(`http://pokeapi.co/api/v2/version/?limit=${data.count}`))
+            .then(data => this.versionList = data.results)
     }
   });
