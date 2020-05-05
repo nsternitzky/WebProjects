@@ -52,24 +52,8 @@ new Vue({
                 fetchData(`http://pokeapi.co/api/v2/pokemon/${this.species.name}/`) //fetch species info for img
             ])
             .then(data => {
-
                 //construct locationList from fetched data
-                this.locationList = data[0].reduce(function(obj,location) {
-                    for (let versionDetails of location.version_details) {
-
-                        //if game version does not yet exist in obj array, create it
-                        if (!obj.find(element => element.version === versionDetails.version.name)) {
-                            obj.push({
-                                version: versionDetails.version.name,
-                                locations: []
-                            });
-                        }
-
-                        //push location to array associated with the corresponding game version
-                        obj.find(element => element.version === versionDetails.version.name).locations.push(location.location_area.name);
-                    }
-                    return obj;
-                }, []);
+                this.buildLocationList(data[0]);
 
                 //sort locationList by game version in order of release date using versionList
                 this.locationList.sort((a,b) => this.versionList.findIndex(item => item.name === a.version) - this.versionList.findIndex(item => item.name === b.version));
@@ -77,6 +61,29 @@ new Vue({
                 //set img to chosen species
                 this.species.img = data[1].sprites.front_default;
             })
+        },
+        /**
+         * Build locationList from provided data
+         * @param {Array[]} data - array containing location data
+         */
+        buildLocationList: function(data) {
+            console.log(data);
+            this.locationList = data.reduce(function(obj,location) {
+                for (let versionDetails of location.version_details) {
+
+                    //if game version does not yet exist in obj array, create it
+                    if (!obj.find(element => element.version === versionDetails.version.name)) {
+                        obj.push({
+                            version: versionDetails.version.name,
+                            locations: []
+                        });
+                    }
+
+                    //push location to array associated with the corresponding game version
+                    obj.find(element => element.version === versionDetails.version.name).locations.push(location.location_area.name);
+                }
+                return obj;
+            }, []);
         },
         /**
          * Format species name for display purposes
