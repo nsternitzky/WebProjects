@@ -55,9 +55,6 @@ new Vue({
                 //construct locationList from fetched data
                 this.buildLocationList(data[0]);
 
-                //sort locationList by game version in order of release date using versionList
-                this.locationList.sort((a,b) => this.versionList.findIndex(item => item.name === a.version) - this.versionList.findIndex(item => item.name === b.version));
-
                 //set img to chosen species
                 this.species.img = data[1].sprites.front_default;
             })
@@ -67,7 +64,6 @@ new Vue({
          * @param {Array[]} data - array containing location data
          */
         buildLocationList: function(data) {
-            console.log(data);
             this.locationList = data.reduce(function(obj,location) {
                 for (let versionDetails of location.version_details) {
 
@@ -84,6 +80,9 @@ new Vue({
                 }
                 return obj;
             }, []);
+
+            //sort locationList by game version in order of release date using versionList
+            this.locationList.sort((a,b) => this.versionList.findIndex(item => item.name === a.version) - this.versionList.findIndex(item => item.name === b.version));
         },
         /**
          * Format species name for display purposes
