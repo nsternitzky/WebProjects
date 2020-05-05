@@ -53,7 +53,6 @@ new Vue({
                     return obj;
                 }, []);
 
-                console.log(this.versionList);
                 this.locationList.sort((a,b) => this.versionList.findIndex(item => item.name === a.version) - this.versionList.findIndex(item => item.name === b.version));
 
                 this.species.img = data[1].sprites.front_default;
